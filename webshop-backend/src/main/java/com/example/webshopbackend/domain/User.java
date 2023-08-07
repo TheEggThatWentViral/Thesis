@@ -1,9 +1,7 @@
 package com.example.webshopbackend.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,7 +41,15 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Role> roles = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "checkout_id", referencedColumnName = "id")
-    private Checkout checkout = new Checkout();
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "jobs_id", referencedColumnName = "id")
+    private Collection<AdvertisedJob> jobsDone;
+
+    @Min(1)
+    @Max(10)
+    private Integer workerRating;
+
+    @Min(1)
+    @Max(10)
+    private Integer publisherRating;
 }
