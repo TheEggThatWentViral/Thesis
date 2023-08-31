@@ -1,2 +1,2 @@
 # Thesis
-BME-VIK IT engineering Bsc thesis
+BME-VIK Computer Science Bsc thesis
