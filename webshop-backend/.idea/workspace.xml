@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c4f71ed5-bd6d-438b-8894-bdab7aa79165" name="Changes" comment="Video">
+      <change afterPath="$PROJECT_DIR$/../backend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/app/src/main/java/com/example/thesisapp/data/network/ThesisApi.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/app/src/main/java/com/example/thesisapp/data/network/interceptor/TokenInterceptor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/app/src/main/java/com/example/thesisapp/data/network/di/HttpModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/app/src/main/java/com/example/thesisapp/data/network/di/HttpModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PBjnH6mZIPBd8qjAfCVeWIEhRQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backend" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nagy.marcell\Desktop\uni\alkfejl\hf\alf2023-triplem\webshop-backend\src\test\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.webshopbackend.service" />
+      <recent name="com.example.webshopbackend.dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.WebshopBackendApplication">
+    <configuration name="CheckoutServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="webshop-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webshopbackend.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.webshopbackend.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.webshopbackend.service.CheckoutServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="webshop-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webshopbackend.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.webshopbackend.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.webshopbackend.service.OrderServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReviewServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="webshop-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webshopbackend.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.webshopbackend.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.webshopbackend.service.ReviewServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="webshop-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webshopbackend.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.webshopbackend.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.webshopbackend.service.UserServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VehicleServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="webshop-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.webshopbackend.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.webshopbackend.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.webshopbackend.service.VehicleServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebshopBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="webshop-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.webshopbackend.WebshopBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CheckoutServiceImplTest" />
+        <item itemvalue="JUnit.OrderServiceImplTest" />
+        <item itemvalue="JUnit.ReviewServiceImplTest" />
+        <item itemvalue="JUnit.UserServiceImplTest" />
+        <item itemvalue="JUnit.VehicleServiceImplTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3" />
+  </component>
+  <component name="SpringBootOptions">
+    <option name="showAdditionalConfigNotification" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4f71ed5-bd6d-438b-8894-bdab7aa79165" name="Changes" comment="" />
+      <created>1682937535742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682937535742</updated>
+      <workItem from="1682937537590" duration="6534000" />
+      <workItem from="1682957960053" duration="33413000" />
+      <workItem from="1683539144293" duration="5085000" />
+      <workItem from="1683797062414" duration="79668000" />
+      <workItem from="1684866048188" duration="52000" />
+      <workItem from="1684909875861" duration="81549000" />
+      <workItem from="1689147965703" duration="9354000" />
+    </task>
+    <task id="LOCAL-00001" summary="User and role added">
+      <created>1682958151045</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682958151045</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implemented access and refresh token">
+      <created>1683037462582</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683037462582</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Code clean up, removed redundancy">
+      <created>1683114837377</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683114837377</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Vehicle entity, repository, service, controller">
+      <created>1683816860690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683816860690</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added field validation">
+      <created>1683816889301</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683816889301</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Vehicle endpoints authorization">
+      <created>1683816930415</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683816930415</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added sample vehicle data and review repository">
+      <created>1683890028091</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683890028091</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Editing data classes">
+      <created>1683890451188</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683890451188</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Extending info repositories">
+      <created>1684577656462</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684577656462</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Adding checkout and address entities, repos, service and controller">
+      <created>1684592546263</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684592546263</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Initialize checkout endpoint">
+      <created>1684661987170</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684661987170</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixing review endpoint">
+      <created>1684767483142</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684767483142</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Adding jms/activemq artemis">
+      <created>1684864434074</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684864434074</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Adding NotionConfigurationProperties for hash code">
+      <created>1684912880405</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684912880405</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Dao unit tests implemented">
+      <created>1684925595874</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684925595874</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Unit tests for service package">
+      <created>1685028669449</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1685028669449</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Frontend login/register">
+      <created>1685125688935</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1685125688935</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Vehicle list implemented in frontend">
+      <created>1685191925772</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1685191925772</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Review endpoint fixed">
+      <created>1685365444126</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1685365444126</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Review endpoint fixed">
+      <created>1685365484969</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1685365484969</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Checkout popup half">
+      <created>1685374754139</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1685374754139</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Final commit">
+      <created>1685385731799</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1685385731799</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Video">
+      <created>1685389395098</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1685389395098</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="application.properties" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="User and role added" />
+    <MESSAGE value="Implemented access and refresh token" />
+    <MESSAGE value="Code clean up, removed redundancy" />
+    <MESSAGE value="Added Vehicle entity, repository, service, controller" />
+    <MESSAGE value="Added field validation" />
+    <MESSAGE value="Vehicle endpoints authorization" />
+    <MESSAGE value="Added sample vehicle data" />
+    <MESSAGE value="Added sample vehicle data and review repository" />
+    <MESSAGE value="Editing data classes" />
+    <MESSAGE value="Extending info repositories" />
+    <MESSAGE value="Adding checkout and address entities, repos, service and controller" />
+    <MESSAGE value="Initialize checkout endpoint" />
+    <MESSAGE value="Fixing review endpoint" />
+    <MESSAGE value="Adding jms/activemq artemis" />
+    <MESSAGE value="Adding NotionConfigurationProperties for hash code" />
+    <MESSAGE value="Dao unit tests implemented" />
+    <MESSAGE value="Unit tests for service package" />
+    <MESSAGE value="Frontend login/register" />
+    <MESSAGE value="Vehicle list implemented in frontend" />
+    <MESSAGE value="Review endpoint fixed" />
+    <MESSAGE value="Checkout popup half" />
+    <MESSAGE value="Final commit" />
+    <MESSAGE value="Video" />
+    <option name="LAST_COMMIT_MESSAGE" value="Video" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_getVehicleByProducer.ic" NAME="VehicleServiceImplTest.getVehicleByProducer Coverage Results" MODIFIED="1685023891372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByEngineType.ic" NAME="VehicleServiceImplTest.canGetVehicleByEngineType Coverage Results" MODIFIED="1685025639551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$CheckoutServiceImplTest_deleteCheckout.ic" NAME="CheckoutServiceImplTest.deleteCheckout Coverage Results" MODIFIED="1685027615025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByFuelType.ic" NAME="VehicleServiceImplTest.canGetVehicleByFuelType Coverage Results" MODIFIED="1685025924281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_willThrowErrorDuringLoadUserByUsername.ic" NAME="UserServiceImplTest.willThrowErrorDuringLoadUserByUsername Coverage Results" MODIFIED="1685020141169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByGearType.ic" NAME="VehicleServiceImplTest.canGetVehicleByGearType Coverage Results" MODIFIED="1685024838846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_saveRole.ic" NAME="UserServiceImplTest.saveRole Coverage Results" MODIFIED="1685012597687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$OrderServiceImplTest.ic" NAME="OrderServiceImplTest Coverage Results" MODIFIED="1685385113477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_getVehicleByFuelType.ic" NAME="VehicleServiceImplTest.getVehicleByFuelType Coverage Results" MODIFIED="1685025788062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$ReviewServiceImplTest_saveReview.ic" NAME="ReviewServiceImplTest.saveReview Coverage Results" MODIFIED="1685385024726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_getVehicle.ic" NAME="VehicleServiceImplTest.getVehicle Coverage Results" MODIFIED="1685021967207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetAllVehicle.ic" NAME="VehicleServiceImplTest.canGetAllVehicle Coverage Results" MODIFIED="1685022130688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_getVehicleByGearType.ic" NAME="VehicleServiceImplTest.getVehicleByGearType Coverage Results" MODIFIED="1685024810025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$BasicInfoRepositoryTest.ic" NAME="BasicInfoRepositoryTest Coverage Results" MODIFIED="1685028570746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.dao.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_canLoadUserByUsername.ic" NAME="UserServiceImplTest.canLoadUserByUsername Coverage Results" MODIFIED="1685020132902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicle.ic" NAME="VehicleServiceImplTest.canGetVehicle Coverage Results" MODIFIED="1685022151408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByPrice.ic" NAME="VehicleServiceImplTest.canGetVehicleByPrice Coverage Results" MODIFIED="1685023772558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_canAddRoleToUser.ic" NAME="UserServiceImplTest.canAddRoleToUser Coverage Results" MODIFIED="1685020170065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest.ic" NAME="VehicleServiceImplTest Coverage Results" MODIFIED="1685385066988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_getVehicleByWheelDrive.ic" NAME="VehicleServiceImplTest.getVehicleByWheelDrive Coverage Results" MODIFIED="1685025875123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByType.ic" NAME="VehicleServiceImplTest.canGetVehicleByType Coverage Results" MODIFIED="1685022404658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$ReviewServiceImplTest.ic" NAME="ReviewServiceImplTest Coverage Results" MODIFIED="1685385102295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_canGetUser.ic" NAME="UserServiceImplTest.canGetUser Coverage Results" MODIFIED="1685020159740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_saveVehicle.ic" NAME="VehicleServiceImplTest.saveVehicle Coverage Results" MODIFIED="1685021095727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$OrderServiceImplTest_sendOrder.ic" NAME="OrderServiceImplTest.sendOrder Coverage Results" MODIFIED="1685028505625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_canSaveRole.ic" NAME="UserServiceImplTest.canSaveRole Coverage Results" MODIFIED="1685020178943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByYearOfProduction.ic" NAME="VehicleServiceImplTest.canGetVehicleByYearOfProduction Coverage Results" MODIFIED="1685024177443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByExteriorColor.ic" NAME="VehicleServiceImplTest.canGetVehicleByExteriorColor Coverage Results" MODIFIED="1685025347846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_saveUser.ic" NAME="UserServiceImplTest.saveUser Coverage Results" MODIFIED="1685012520814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByName.ic" NAME="VehicleServiceImplTest.canGetVehicleByName Coverage Results" MODIFIED="1685023131071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$CheckoutServiceImplTest_getCheckout.ic" NAME="CheckoutServiceImplTest.getCheckout Coverage Results" MODIFIED="1685026878227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canDeleteVehicle.ic" NAME="VehicleServiceImplTest.canDeleteVehicle Coverage Results" MODIFIED="1685022161430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_deleteVehicle.ic" NAME="VehicleServiceImplTest.deleteVehicle Coverage Results" MODIFIED="1685021577488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$BasicInfoRepositoryTest_canFindByProducerContains.ic" NAME="BasicInfoRepositoryTest.canFindByProducerContains Coverage Results" MODIFIED="1685009793076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.dao.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_canSaveUser.ic" NAME="UserServiceImplTest.canSaveUser Coverage Results" MODIFIED="1685020188880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_canGetUsers.ic" NAME="UserServiceImplTest.canGetUsers Coverage Results" MODIFIED="1685020149899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canSaveVehicle.ic" NAME="VehicleServiceImplTest.canSaveVehicle Coverage Results" MODIFIED="1685022172290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$CheckoutServiceImplTest_saveCheckout.ic" NAME="CheckoutServiceImplTest.saveCheckout Coverage Results" MODIFIED="1685026702552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$OrderServiceImplTest_saveOrder.ic" NAME="OrderServiceImplTest.saveOrder Coverage Results" MODIFIED="1685027918317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByInteriorColor.ic" NAME="VehicleServiceImplTest.canGetVehicleByInteriorColor Coverage Results" MODIFIED="1685025376069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$CheckoutServiceImplTest.ic" NAME="CheckoutServiceImplTest Coverage Results" MODIFIED="1685385126105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest_addRoleToUser.ic" NAME="UserServiceImplTest.addRoleToUser Coverage Results" MODIFIED="1685013708081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$UserServiceImplTest.ic" NAME="UserServiceImplTest Coverage Results" MODIFIED="1685385086098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByTrunkCapacity.ic" NAME="VehicleServiceImplTest.canGetVehicleByTrunkCapacity Coverage Results" MODIFIED="1685024980739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByProducer.ic" NAME="VehicleServiceImplTest.canGetVehicleByProducer Coverage Results" MODIFIED="1685024004862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/webshop_backend$VehicleServiceImplTest_canGetVehicleByPassengerCapacity.ic" NAME="VehicleServiceImplTest.canGetVehicleByPassengerCapacity Coverage Results" MODIFIED="1685024624026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.webshopbackend.service.*</FILTER>
+    </SUITE>
+  </component>
+</project>

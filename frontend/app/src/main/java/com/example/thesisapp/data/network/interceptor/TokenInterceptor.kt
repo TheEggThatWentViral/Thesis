@@ -1,7 +1,7 @@
 package com.example.thesisapp.data.network.interceptor
 
 import com.example.thesisapp.config.ConfigurationProvider
-import com.example.thesisapp.data.network.ThesisApi
+import com.example.thesisapp.data.network.api.ThesisApi
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class TokenInterceptor @Inject constructor(
     private val thesisApi: ThesisApi,
     private val configurationProvider: ConfigurationProvider
-): Interceptor {
+) : Interceptor {
 
     companion object {
         private const val TOKEN_HEADER = "Authorization"
@@ -70,15 +70,14 @@ class TokenInterceptor @Inject constructor(
     }
 
     private suspend fun relogin(): Boolean {
-        //val email = configurationProvider.email
+        // val email = configurationProvider.email
 
         /*if (email == null || sessionPassword == null) {
             Timber.w("Not all information is available for relogin")
             return false
         }*/
 
-        //val loginResponse =
-
+        // val loginResponse =
 
         return true/*if (loginResponse is NetworkResult) {
             selectConfiguration(selectedConfig)

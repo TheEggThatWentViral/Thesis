@@ -1,15 +1,12 @@
 package com.example.thesisapp.data.network.di
 
 import com.example.thesisapp.BuildConfig
-import com.example.thesisapp.data.network.ThesisApi
+import com.example.thesisapp.data.network.api.ThesisApi
 import com.example.thesisapp.data.network.interceptor.TokenInterceptor
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dagger.multibindings.IntoSet
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
