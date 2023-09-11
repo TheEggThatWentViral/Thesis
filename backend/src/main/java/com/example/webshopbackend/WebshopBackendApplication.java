@@ -31,20 +31,24 @@ public class WebshopBackendApplication {
             userService.saveRole(new Role(null, "ROLE_USER"));
             userService.saveRole(new Role(null, "ROLE_ADMIN"));
 
-            /*userService.saveUser(
+            userService.saveUser(
                     new User(
                             null,
                             "Marcell",
                             "Nagy",
                             "marci",
                             "horvathmarcit@gmail.com",
-                            "marci",
+                            "Password12!",
                             new ArrayList<>(),
-                            new Checkout()
+                            new ArrayList<>(),
+                            5,
+                            5
                     )
             );
 
-            userService.saveUser(
+            userService.addRoleToUser("marci", "ROLE_USER");
+
+            /*userService.saveUser(
                     new User(
                             null,
                             "Marcell",

@@ -43,7 +43,7 @@ public class User {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "jobs_id", referencedColumnName = "id")
-    private Collection<AdvertisedJob> jobsDone;
+    private Collection<AdvertisedJob> jobsDone = new ArrayList<>();
 
     @Min(1)
     @Max(10)
