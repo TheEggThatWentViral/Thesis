@@ -14,6 +14,6 @@ data class RegistrationRequest(
     val password: String,
     val roles: Collection<UserRole>? = null,
     val jobsDone: Collection<AdvertisedJob>? = null,
-    val workerRating: Int,
-    val publisherRating: Int
+    val workerRating: Int = 0,
+    val publisherRating: Int = 0
 )

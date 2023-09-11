@@ -1,7 +1,7 @@
 package com.example.thesisapp.config
 
 import android.content.Context
-import com.example.thesisapp.data.network.model.LoginRequest
+import com.example.thesisapp.domain.model.LoginCredentials
 import dagger.hilt.android.qualifiers.ApplicationContext
 import hu.autsoft.krate.SimpleKrate
 import hu.autsoft.krate.stringPref
@@ -12,10 +12,13 @@ class ConfigurationProvider @Inject constructor(
 ) : SimpleKrate(context) {
 
     var username: String? by stringPref("USERNAME")
-    var password: String? by stringPref("PASS")
-    var token: String? by stringPref("TOKEN")
+    var password: String? by stringPref("PASSWORD")
+    var accessToken: String? by stringPref("ACCESS_TOKEN")
+    var expiredAccessToken: String? by stringPref("EXPIRED_ACCESS_TOKEN")
+    var refreshToken: String? by stringPref("REFRESH_TOKEN")
+    var expiredRefreshToken: String? by stringPref("EXPIRED_REFRESH_TOKEN")
 
-    fun getRememberedCredentials(): LoginRequest? {
+    fun getRememberedCredentials(): LoginCredentials? {
         val currentUsername = username
         val currentPassword = password
 
@@ -23,8 +26,8 @@ class ConfigurationProvider @Inject constructor(
             return null
         }
 
-        return LoginRequest(
-            username = currentUsername,
+        return LoginCredentials(
+            username = currentUsername ?: "",
             password = currentPassword
         )
     }

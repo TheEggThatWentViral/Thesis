@@ -1,7 +1,10 @@
 package com.example.thesisapp.data.network.interceptor
 
 import com.example.thesisapp.config.ConfigurationProvider
-import com.example.thesisapp.data.network.api.ThesisApi
+import com.example.thesisapp.data.network.api.AuthenticationApi
+import com.example.thesisapp.data.network.model.LoginRequest
+import com.example.thesisapp.util.NetworkResult
+import com.example.thesisapp.util.apiCall
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -12,7 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 class TokenInterceptor @Inject constructor(
-    private val thesisApi: ThesisApi,
+    private val authenticationApi: AuthenticationApi,
     private val configurationProvider: ConfigurationProvider
 ) : Interceptor {
 
@@ -70,21 +73,43 @@ class TokenInterceptor @Inject constructor(
     }
 
     private suspend fun relogin(): Boolean {
-        // val email = configurationProvider.email
+        val username = configurationProvider.username
+        val password = configurationProvider.password
 
-        /*if (email == null || sessionPassword == null) {
-            Timber.w("Not all information is available for relogin")
+        if (username == null || username == "") {
+            Timber.w("The saved username is invalid")
             return false
-        }*/
+        }
 
-        // val loginResponse =
+        val loginResponse = apiCall {
+            authenticationApi.login(
+                LoginRequest(
+                    username = username,
+                    password = password
+                )
+            )
+        }
 
-        return true/*if (loginResponse is NetworkResult) {
-            selectConfiguration(selectedConfig)
-        } else {
-            Timber.w("Login call failed")
-            false
-        }*/
+        return when (loginResponse) {
+            is NetworkResult -> {
+                val accessToken = loginResponse.result.access_token
+                val refreshToken = loginResponse.result.refresh_token
+
+                if (configurationProvider.expiredAccessToken != configurationProvider.accessToken) {
+                    configurationProvider.expiredAccessToken = configurationProvider.accessToken
+                }
+
+                if (configurationProvider.expiredRefreshToken != configurationProvider.refreshToken) {
+                    configurationProvider.expiredRefreshToken = configurationProvider.refreshToken
+                }
+
+                configurationProvider.accessToken = accessToken
+                configurationProvider.refreshToken = refreshToken
+
+                true
+            }
+            else -> false
+        }
     }
 
     private fun waitForReloginAndProceed(
@@ -105,10 +130,10 @@ class TokenInterceptor @Inject constructor(
         originalRequest: Request,
         originalResponse: Response? = null
     ): Response {
-        val token = configurationProvider.token ?: ""
+        val accessToken = configurationProvider.accessToken ?: ""
 
         val newRequest = originalRequest.newBuilder()
-            .addHeader(TOKEN_HEADER, token)
+            .addHeader(TOKEN_HEADER, "Bearer $accessToken")
             .build()
 
         originalResponse?.close()
