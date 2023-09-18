@@ -14,8 +14,8 @@ data class RoomUser(
     val username: String,
     val email: String,
     val password: String,
-    val roles: Collection<UserRole> = ArrayList(),
-    val jobsDone: Collection<AdvertisedJob> = ArrayList(),
+    val roles: Collection<UserRole>,
+    val jobsDone: Collection<AdvertisedJob>,
     val workerRating: Int,
     val publisherRating: Int
 )
