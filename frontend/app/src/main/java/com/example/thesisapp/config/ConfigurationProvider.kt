@@ -31,4 +31,13 @@ class ConfigurationProvider @Inject constructor(
             password = currentPassword
         )
     }
+
+    fun clearSession() {
+        username = null
+        password = null
+        accessToken = null
+        expiredAccessToken = null
+        refreshToken = null
+        expiredRefreshToken = null
+    }
 }
