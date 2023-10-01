@@ -69,7 +69,7 @@ fun ThesisScaffold(
 }
 
 @Composable
-fun rememberJetsnackScaffoldState(
+fun rememberThesisScaffoldState(
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     snackbarManager: SnackbarManager = SnackbarManager,
     resources: Resources = resources(),

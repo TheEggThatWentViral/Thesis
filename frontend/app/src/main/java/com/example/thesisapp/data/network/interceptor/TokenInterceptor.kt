@@ -83,10 +83,8 @@ class TokenInterceptor @Inject constructor(
 
         val loginResponse = apiCall {
             authenticationApi.login(
-                LoginRequest(
-                    username = username,
-                    password = password
-                )
+                username = username,
+                password = password ?: ""
             )
         }
 

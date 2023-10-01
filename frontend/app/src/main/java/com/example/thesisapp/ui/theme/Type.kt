@@ -23,10 +23,10 @@ private val Karla = FontFamily(
 val Typography = Typography(
     h1 = TextStyle(
         fontFamily = Montserrat,
-        fontSize = 96.sp,
-        fontWeight = FontWeight.Light,
-        lineHeight = 117.sp,
-        letterSpacing = (-1.5).sp
+        fontSize = 40.sp,
+        fontWeight = FontWeight.Bold,
+        lineHeight = 40.sp,
+        letterSpacing = 0.15.sp
     ),
     h2 = TextStyle(
         fontFamily = Montserrat,
@@ -63,7 +63,7 @@ val Typography = Typography(
         fontFamily = Montserrat,
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
-        lineHeight = 24.sp,
+        lineHeight = 20.sp,
         letterSpacing = 0.15.sp
     ),
     subtitle2 = TextStyle(
@@ -96,8 +96,8 @@ val Typography = Typography(
     ),
     caption = TextStyle(
         fontFamily = Karla,
-        fontSize = 12.sp,
-        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Light,
         lineHeight = 16.sp,
         letterSpacing = 0.4.sp
     ),

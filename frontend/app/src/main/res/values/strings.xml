@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">thesisapp</string>
+
+    <!-- Bottom nav bar -->
+    <string name="home_feed">Home</string>
+    <string name="home_profile">Profile</string>
+    <string name="home_jobs">Jobs</string>
+
+    <!-- Image/icon descriptions -->
+    <string name="login_img_desc">Picture of working people</string>
+    <string name="login_username_icon">Username icon</string>
+    <string name="login_password_icon">Password icon</string>
+    <string name="login_google_icon">Google icon</string>
+    <string name="login_facebook_icon">Facebook icon</string>
+    <string name="login_twitter_icon">Twitter icon</string>
+
+    <!-- Login screen -->
+    <string name="sign_in_btn">SIGN IN</string>
+    <string name="sign_up_btn">SIGN UP</string>
+    <string name="remember_me_label">Remember me</string>
+    <string name="forgot_password_label">Forgot my password</string>
+
+    <!-- Registration screen -->
+    <string name="sign_up_label">Sign up</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="password_agian">Password again</string>
+    <string name="register_btn">Register</string>
+    <string name="unknown_error_msg">Unknown error</string>
 </resources>
