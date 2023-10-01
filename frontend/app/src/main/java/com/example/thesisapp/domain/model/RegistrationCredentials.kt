@@ -6,6 +6,6 @@ data class RegistrationCredentials(
     val username: String,
     val email: String,
     val password: String,
-    val workerRating: Int,
-    val publisherRating: Int
+    val workerRating: Int = 0,
+    val publisherRating: Int = 0
 )

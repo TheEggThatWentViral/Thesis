@@ -16,10 +16,8 @@ class AuthenticationNetworkDataSource(
 
     suspend fun login(credentials: LoginCredentials): NetworkResponse<LoginResponse> = apiCall {
         authenticationApi.login(
-            LoginRequest(
-                username = credentials.username,
-                password = credentials.password
-            )
+            username = credentials.username,
+            password = credentials.password
         )
     }
     suspend fun register(

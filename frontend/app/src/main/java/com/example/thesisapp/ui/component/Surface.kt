@@ -20,12 +20,8 @@ import androidx.compose.ui.zIndex
 import com.example.thesisapp.ui.theme.ThesisTheme
 import kotlin.math.ln
 
-/**
- * An alternative to [androidx.compose.material.Surface] utilizing
- * [com.example.jetsnack.ui.theme.JetsnackColors]
- */
 @Composable
-fun JetsnackSurface(
+fun ThesisSurface(
     modifier: Modifier = Modifier,
     shape: Shape = RectangleShape,
     color: Color = ThesisTheme.colors.uiBackground,

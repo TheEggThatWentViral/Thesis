@@ -49,13 +49,20 @@ class HttpModule {
     @LoginClient
     @Singleton
     @Provides
-    fun provideLoginOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+    fun provideLoginOkHttpClient(): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
 
     @LoginClient
     @Singleton
     @Provides
-    fun provideLoginRetrofit(@LoginClient okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .client(okHttpClient).build()
+    fun provideLoginRetrofit(@LoginClient okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
 
     @Provides
     @Singleton

@@ -5,6 +5,7 @@ import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val LightColorPalette = ThesisAppColors(
     brand = Shadow5,
@@ -35,7 +37,11 @@ private val LightColorPalette = ThesisAppColors(
     gradient2_2 = listOf(Ocean3, Shadow3),
     gradient2_3 = listOf(Lavender3, Rose2),
     tornado1 = listOf(Shadow4, Ocean3),
-    isDark = false
+    isDark = false,
+    loginBasic = Ocean8,
+    loginFocus = Lavender8,
+    checkBasic = Rose2,
+    checkFocus = Rose7
 )
 
 private val DarkColorPalette = ThesisAppColors(
@@ -62,7 +68,11 @@ private val DarkColorPalette = ThesisAppColors(
     gradient2_2 = listOf(Ocean4, Shadow2),
     gradient2_3 = listOf(Lavender3, Rose3),
     tornado1 = listOf(Shadow4, Ocean3),
-    isDark = true
+    isDark = true,
+    loginBasic = Lavender7,
+    loginFocus = Lavender3,
+    checkBasic = Rose2,
+    checkFocus = Rose7
 )
 
 @Composable
@@ -71,6 +81,14 @@ fun ThesisappTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composa
         DarkColorPalette
     } else {
         LightColorPalette
+    }
+
+    val sysUiController = rememberSystemUiController()
+
+    SideEffect {
+        sysUiController.setSystemBarsColor(
+            color = Color.Transparent
+        )
     }
 
     ProvideThesisAppColors(colors) {
@@ -118,7 +136,11 @@ class ThesisAppColors(
     iconInteractiveInactive: Color,
     error: Color,
     notificationBadge: Color = error,
-    isDark: Boolean
+    isDark: Boolean,
+    loginBasic: Color,
+    loginFocus: Color,
+    checkBasic: Color,
+    checkFocus: Color
 ) {
     var gradient6_1 by mutableStateOf(gradient6_1)
         private set
@@ -177,6 +199,18 @@ class ThesisAppColors(
     var isDark by mutableStateOf(isDark)
         private set
 
+    var loginBasic by mutableStateOf(loginBasic)
+        private set
+
+    var loginFocus by mutableStateOf(loginFocus)
+        private set
+
+    var checkBasic by mutableStateOf(checkBasic)
+        private set
+
+    var checkFocus by mutableStateOf(checkFocus)
+        private set
+
     fun update(other: ThesisAppColors) {
         gradient6_1 = other.gradient6_1
         gradient6_2 = other.gradient6_2
@@ -206,6 +240,10 @@ class ThesisAppColors(
         error = other.error
         notificationBadge = other.notificationBadge
         isDark = other.isDark
+        loginBasic = other.loginBasic
+        loginFocus = other.loginBasic
+        checkBasic = checkBasic
+        checkFocus = checkFocus
     }
 
     fun copy(): ThesisAppColors = ThesisAppColors(
@@ -236,7 +274,11 @@ class ThesisAppColors(
         iconInteractiveInactive = iconInteractiveInactive,
         error = error,
         notificationBadge = notificationBadge,
-        isDark = isDark
+        isDark = isDark,
+        loginBasic = loginBasic,
+        loginFocus = loginFocus,
+        checkBasic = checkBasic,
+        checkFocus = checkFocus
     )
 }
 
