@@ -13,6 +13,7 @@
     <string name="login_google_icon">Google icon</string>
     <string name="login_facebook_icon">Facebook icon</string>
     <string name="login_twitter_icon">Twitter icon</string>
+    <string name="feed_filter_icon">Twitter icon</string>
 
     <!-- Login screen -->
     <string name="sign_in_btn">SIGN IN</string>

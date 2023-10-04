@@ -26,10 +26,13 @@ public class AdvertisedJob {
     )
     private String title;
 
-    @Max(1000)
+    @Size(
+        max = 1000,
+        message = "The length of the description should be maximum 1000 characters"
+    )
     private String description;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
@@ -37,6 +40,8 @@ public class AdvertisedJob {
     private String price;
 
     private JobState state;
+
+    private String imageUrl;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users_id", referencedColumnName = "id")

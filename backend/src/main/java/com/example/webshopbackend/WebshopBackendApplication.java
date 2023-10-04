@@ -2,6 +2,7 @@ package com.example.webshopbackend;
 
 import com.example.webshopbackend.config.security.NotionConfigurationProperties;
 import com.example.webshopbackend.domain.*;
+import com.example.webshopbackend.service.JobService;
 import com.example.webshopbackend.service.OrderService;
 import com.example.webshopbackend.service.UserService;
 import com.example.webshopbackend.service.VehicleService;
@@ -25,28 +26,69 @@ public class WebshopBackendApplication {
     CommandLineRunner run(
         UserService userService,
         VehicleService vehicleService,
-        OrderService orderService
+        OrderService orderService,
+        JobService jobService
     ) {
         return args -> {
             userService.saveRole(new Role(null, "ROLE_USER"));
             userService.saveRole(new Role(null, "ROLE_ADMIN"));
 
-            userService.saveUser(
-                    new User(
+            User user = new User(
+                    null,
+                    "Marcell",
+                    "Nagy",
+                    "marci",
+                    "horvathmarcit@gmail.com",
+                    "Password12!",
+                    new ArrayList<>(),
+                    new ArrayList<>(),
+                    5,
+                    5
+            );
+
+            userService.saveUser(user);
+
+            userService.addRoleToUser("marci", "ROLE_USER");
+
+            jobService.saveJob(
+                    new AdvertisedJob(
                             null,
-                            "Marcell",
-                            "Nagy",
-                            "marci",
-                            "horvathmarcit@gmail.com",
-                            "Password12!",
-                            new ArrayList<>(),
-                            new ArrayList<>(),
-                            5,
-                            5
+                            "Cleaning",
+                            "Cleaning a house",
+                            new Address(
+                                    null,
+                                    "Hungary",
+                                    "Miskolc",
+                                    "1234",
+                                    "Petőfi utca",
+                                    "12."
+                            ),
+                            "35$",
+                            JobState.ACTIVE,
+                            "img",
+                            user
                     )
             );
 
-            userService.addRoleToUser("marci", "ROLE_USER");
+            jobService.saveJob(
+                    new AdvertisedJob(
+                            null,
+                            "Driving",
+                            "Driving some trucks",
+                            new Address(
+                                    null,
+                                    "England",
+                                    "London",
+                                    "1234",
+                                    "Mark Twain street",
+                                    "23."
+                            ),
+                            "50$",
+                            JobState.ACTIVE,
+                            "img",
+                            user
+                    )
+            );
 
             /*userService.saveUser(
                     new User(

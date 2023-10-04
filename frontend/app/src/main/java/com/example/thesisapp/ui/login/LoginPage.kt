@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Switch
 import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
@@ -25,7 +24,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -47,6 +45,7 @@ import com.example.thesisapp.ui.component.ThesisButtonGradient
 import com.example.thesisapp.ui.component.ThesisOutlinedTextField
 import com.example.thesisapp.ui.component.ThesisSurface
 import com.example.thesisapp.ui.navigation.AuthenticationSections
+import com.example.thesisapp.ui.navigation.HomeSections
 import com.example.thesisapp.ui.theme.Shapes
 import com.example.thesisapp.ui.theme.ThesisTheme
 import com.example.thesisapp.ui.theme.ThesisappTheme
@@ -68,7 +67,7 @@ fun LoginPage(
         event = state.loginSuccess,
         onConsumed = onConsumedLoginSuccess
     ) {
-
+        onNavigateToRoute(HomeSections.FEED.route)
     }
 
     EventEffect(
