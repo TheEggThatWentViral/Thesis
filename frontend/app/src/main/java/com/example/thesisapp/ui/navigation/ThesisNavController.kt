@@ -11,8 +11,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 object MainDestinations {
-    const val HOME_ROUTE = "home"
     const val AUTHENTICATION_ROUTE = "authentication"
+    const val JOB_DETAIL_ROUTE = "detail"
+    const val JOB_ID_KEY = "jobId"
+    const val JOB_LIST_ROUTE = "list"
+    const val JOB_LIST_NAME_KEY = "listName"
 }
 
 @Composable
@@ -46,12 +49,19 @@ class ThesisNavController(
         }
     }
 
-    /*fun navigateToSnackDetail(snackId: Long, from: NavBackStackEntry) {
-        // In order to discard duplicated navigation events, we check the Lifecycle
+    fun navigateToJobDetail(jobId: Long, from: NavBackStackEntry) {
         if (from.lifecycleIsResumed()) {
-            navController.navigate("${MainDestinations.SNACK_DETAIL_ROUTE}/$snackId")
+            navController.navigate("${MainDestinations.JOB_DETAIL_ROUTE}/$jobId")
         }
-    }*/
+    }
+
+    fun navigateToJobList(nameId: Int, from: NavBackStackEntry) {
+        if (from.lifecycleIsResumed()) {
+            navController.navigate(
+                "${MainDestinations.JOB_LIST_ROUTE}/$nameId"
+            )
+        }
+    }
 }
 
 private fun NavBackStackEntry.lifecycleIsResumed() =

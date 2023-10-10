@@ -25,7 +25,7 @@ fun Modifier.diagonalGradientTint(
     )
 }
 
-fun Modifier.offsetGradientBackground(
+fun Modifier.offsetGradientHorizontalBackground(
     colors: List<Color>,
     width: Float,
     offset: Float = 0f
@@ -34,6 +34,19 @@ fun Modifier.offsetGradientBackground(
         colors,
         startX = -offset,
         endX = width - offset,
+        tileMode = TileMode.Mirror
+    )
+)
+
+fun Modifier.offsetGradientVerticalBackground(
+    colors: List<Color>,
+    width: Float,
+    offset: Float = 0f
+) = background(
+    Brush.verticalGradient(
+        colors,
+        startY = -offset,
+        endY = width - offset,
         tileMode = TileMode.Mirror
     )
 )

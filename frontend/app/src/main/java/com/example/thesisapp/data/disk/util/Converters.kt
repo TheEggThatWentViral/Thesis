@@ -1,11 +1,9 @@
 package com.example.thesisapp.data.disk.util
 
 import androidx.room.TypeConverter
-import com.example.thesisapp.data.disk.model.RoomAdvertisedJob
-import com.example.thesisapp.data.disk.model.RoomJobState
-import com.example.thesisapp.data.disk.model.RoomUser
 import com.example.thesisapp.domain.model.Address
 import com.example.thesisapp.domain.model.AdvertisedJob
+import com.example.thesisapp.domain.model.Coordinates
 import com.example.thesisapp.domain.model.JobState
 import com.example.thesisapp.domain.model.User
 import com.example.thesisapp.domain.model.UserRole
@@ -107,5 +105,15 @@ class Converters {
     @TypeConverter
     fun stringToAddress(str: String): Address {
         return Gson().fromJson(str, Address::class.java)
+    }
+
+    @TypeConverter
+    fun coordinatesToString(coordinates: Coordinates): String {
+        return Gson().toJson(coordinates)
+    }
+
+    @TypeConverter
+    fun stringToCoordinates(str: String): Coordinates {
+        return Gson().fromJson(str, Coordinates::class.java)
     }
 }

@@ -49,9 +49,9 @@ val Typography = Typography(
     ),
     h5 = TextStyle(
         fontFamily = Montserrat,
-        fontSize = 24.sp,
+        fontSize = 18.sp,
         fontWeight = FontWeight.SemiBold,
-        lineHeight = 29.sp
+        lineHeight = 24.sp
     ),
     h6 = TextStyle(
         fontFamily = Montserrat,
@@ -82,7 +82,7 @@ val Typography = Typography(
     ),
     body2 = TextStyle(
         fontFamily = Montserrat,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Medium,
         lineHeight = 20.sp,
         letterSpacing = 0.25.sp
@@ -96,15 +96,15 @@ val Typography = Typography(
     ),
     caption = TextStyle(
         fontFamily = Karla,
-        fontSize = 16.sp,
-        fontWeight = FontWeight.Light,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Normal,
         lineHeight = 16.sp,
         letterSpacing = 0.4.sp
     ),
     overline = TextStyle(
-        fontFamily = Montserrat,
-        fontSize = 12.sp,
-        fontWeight = FontWeight.SemiBold,
+        fontFamily = Karla,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Light,
         lineHeight = 16.sp,
         letterSpacing = 1.sp
     )

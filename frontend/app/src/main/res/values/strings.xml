@@ -13,6 +13,9 @@
     <string name="login_google_icon">Google icon</string>
     <string name="login_facebook_icon">Facebook icon</string>
     <string name="login_twitter_icon">Twitter icon</string>
+    <string name="feed_filter_icon">Filter icon</string>
+    <string name="detail_location_icon">Location icon</string>
+    <string name="detail_time_icon">Time icon</string>
 
     <!-- Login screen -->
     <string name="sign_in_btn">SIGN IN</string>
@@ -30,4 +33,16 @@
     <string name="password_agian">Password again</string>
     <string name="register_btn">Register</string>
     <string name="unknown_error_msg">Unknown error</string>
+
+    <!-- Feed screen -->
+    <string name="feed_label">Your feed</string>
+
+    <!-- Job list screen -->
+    <string name="list_details_label">Details</string>
+    <string name="list_arrow_icon">Arrow icon</string>
+
+    <!-- Detail screen -->
+    <string name="details_label">Details</string>
+    <string name="apply_btn">Apply</string>
+
 </resources>

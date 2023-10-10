@@ -1,7 +1,6 @@
-package com.example.thesisapp.ui.home
+package com.example.thesisapp.ui.component
 
 import androidx.annotation.FloatRange
-import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
@@ -21,10 +20,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.AccountCircle
-import androidx.compose.material.icons.outlined.Edit
-import androidx.compose.material.icons.outlined.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -35,7 +30,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.MeasureResult
 import androidx.compose.ui.layout.MeasureScope
@@ -43,52 +37,16 @@ import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import androidx.core.os.ConfigurationCompat
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavGraphBuilder
-import com.example.thesisapp.R
-import com.example.thesisapp.ui.component.ThesisSurface
+import com.example.thesisapp.ui.navigation.HomeSections
 import com.example.thesisapp.ui.theme.ThesisTheme
 import com.example.thesisapp.ui.theme.ThesisappTheme
 import java.util.Locale
-//import androidx.compose.ui.util.lerp
 
-fun NavGraphBuilder.addHomeGraph(
-    onNavigateToRoute: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    /*composable(HomeSections.HOME.route) {
-
-    }
-    composable(HomeSections..route) { from ->
-        Feed(onSnackClick = { id -> onSnackSelected(id, from) }, onNavigateToRoute, modifier)
-    }
-    composable(HomeSections.SEARCH.route) { from ->
-        Search(onSnackClick = { id -> onSnackSelected(id, from) }, onNavigateToRoute, modifier)
-    }
-    composable(HomeSections.CART.route) { from ->
-        Cart(onSnackClick = { id -> onSnackSelected(id, from) }, onNavigateToRoute, modifier)
-    }
-    composable(HomeSections.PROFILE.route) {
-        Profile(onNavigateToRoute, modifier)
-    }*/
-}
-
-enum class HomeSections(
-    @StringRes val title: Int,
-    val icon: ImageVector,
-    val route: String
-) {
-    FEED(R.string.home_feed, Icons.Outlined.Home, "home/feed"),
-    PROFILE(R.string.home_profile, Icons.Outlined.AccountCircle, "home/profile"),
-    JOBS(R.string.home_jobs, Icons.Outlined.Edit, "home/jobs")
-
-}
 
 @Composable
 fun ThesisBottomBar(
@@ -346,7 +304,7 @@ private val BottomNavigationItemPadding = Modifier.padding(horizontal = 16.dp, v
 
 @Preview
 @Composable
-private fun JetsnackBottomNavPreview() {
+private fun ThesisBottomNavPreview() {
     ThesisappTheme {
         ThesisBottomBar(
             tabs = HomeSections.values(),
