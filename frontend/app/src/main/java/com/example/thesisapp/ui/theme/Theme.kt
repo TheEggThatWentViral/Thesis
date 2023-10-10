@@ -31,6 +31,7 @@ private val LightColorPalette = ThesisAppColors(
     error = FunctionalRed,
     gradient6_1 = listOf(Shadow4, Ocean3, Shadow2, Ocean3, Shadow4),
     gradient6_2 = listOf(Rose4, Lavender3, Rose2, Lavender3, Rose4),
+    gradient6_3 = listOf(Rose4, Lavender3, Rose2, Lavender3, Rose4),
     gradient3_1 = listOf(Shadow2, Ocean3, Shadow4),
     gradient3_2 = listOf(Rose2, Lavender3, Rose4),
     gradient2_1 = listOf(Shadow4, Shadow11),
@@ -62,6 +63,7 @@ private val DarkColorPalette = ThesisAppColors(
     error = FunctionalRedDark,
     gradient6_1 = listOf(Shadow5, Ocean7, Shadow9, Ocean7, Shadow5),
     gradient6_2 = listOf(Rose11, Lavender7, Rose8, Lavender7, Rose11),
+    gradient6_3 = listOf(Rose11, Lavender7, Rose8),
     gradient3_1 = listOf(Shadow9, Ocean7, Shadow5),
     gradient3_2 = listOf(Rose8, Lavender7, Rose11),
     gradient2_1 = listOf(Ocean3, Shadow3),
@@ -111,6 +113,7 @@ object ThesisTheme {
 class ThesisAppColors(
     gradient6_1: List<Color>,
     gradient6_2: List<Color>,
+    gradient6_3: List<Color>,
     gradient3_1: List<Color>,
     gradient3_2: List<Color>,
     gradient2_1: List<Color>,
@@ -145,6 +148,8 @@ class ThesisAppColors(
     var gradient6_1 by mutableStateOf(gradient6_1)
         private set
     var gradient6_2 by mutableStateOf(gradient6_2)
+        private set
+    var gradient6_3 by mutableStateOf(gradient6_3)
         private set
     var gradient3_1 by mutableStateOf(gradient3_1)
         private set
@@ -249,6 +254,7 @@ class ThesisAppColors(
     fun copy(): ThesisAppColors = ThesisAppColors(
         gradient6_1 = gradient6_1,
         gradient6_2 = gradient6_2,
+        gradient6_3 = gradient6_3,
         gradient3_1 = gradient3_1,
         gradient3_2 = gradient3_2,
         gradient2_1 = gradient2_1,

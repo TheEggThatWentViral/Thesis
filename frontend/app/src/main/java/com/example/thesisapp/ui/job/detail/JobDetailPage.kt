@@ -76,7 +76,7 @@ fun JobDetailPage(
                 Text(
                     text = job.price.toString() + " $",
                     style = MaterialTheme.typography.h4 ,
-                    color = ThesisTheme.colors.checkFocus,
+                    color = ThesisTheme.colors.textPrimary,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }

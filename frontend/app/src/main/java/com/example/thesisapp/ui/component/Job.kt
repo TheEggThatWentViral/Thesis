@@ -22,7 +22,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -50,14 +49,14 @@ import com.example.thesisapp.domain.model.CollectionType
 import com.example.thesisapp.domain.model.Coordinates
 import com.example.thesisapp.domain.model.JobCollectionData
 import com.example.thesisapp.domain.model.JobState
-import com.example.thesisapp.ui.navigation.MainDestinations
 import com.example.thesisapp.ui.theme.ThesisTheme
 import com.example.thesisapp.ui.theme.ThesisappTheme
 import com.example.thesisapp.ui.util.mirroringIcon
 
 val HighlightCardWidth = 170.dp
-val HighlitedCardBoxHeight = 100.dp
+val HighlightCardBoxHeight = 100.dp
 val HighlightCardPadding = 16.dp
+
 
 // The Cards show a gradient which spans 3 cards and scrolls with parallax.
 private val gradientWidth
@@ -239,7 +238,11 @@ private fun HighlightJobItem(
                     modifier = Modifier
                         .height(100.dp)
                         .fillMaxWidth()
-                        .offsetGradientHorizontalBackground(gradient, gradientWidth, gradientOffset)
+                        .offsetGradientHorizontalBackground(
+                            gradient,
+                            gradientWidth,
+                            gradientOffset
+                        )
                 )
                 JobImage(
                     imageUrl = job.imageUrl,
@@ -282,7 +285,7 @@ fun HighlightJobItemWide(
     modifier: Modifier = Modifier
 ) {
     val top = index * with(LocalDensity.current) {
-        (HighlitedCardBoxHeight + HighlightCardPadding).toPx()
+        (HighlightCardBoxHeight + HighlightCardPadding).toPx()
     }
 
     ThesisCard(

@@ -18,7 +18,7 @@ import com.example.thesisapp.domain.model.filters
 import com.example.thesisapp.ui.component.FilterBar
 import com.example.thesisapp.ui.component.HighlightCardPadding
 import com.example.thesisapp.ui.component.HighlightJobItemWide
-import com.example.thesisapp.ui.component.HighlitedCardBoxHeight
+import com.example.thesisapp.ui.component.HighlightCardBoxHeight
 import com.example.thesisapp.ui.component.ThesisDivider
 import com.example.thesisapp.ui.component.ThesisScaffold
 import com.example.thesisapp.ui.component.advertisedJobs
@@ -38,7 +38,7 @@ fun JobListPage(
         val scroll = rememberScrollState(0)
         val gradient = ThesisTheme.colors.gradient6_1
         val gradientHeight = with(LocalDensity.current) {
-            (6 * (HighlitedCardBoxHeight + HighlightCardPadding).toPx())
+            (6 * (HighlightCardBoxHeight + HighlightCardPadding).toPx())
         }
 
         val name = when (nameId) {

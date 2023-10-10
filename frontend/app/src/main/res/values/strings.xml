@@ -16,6 +16,10 @@
     <string name="feed_filter_icon">Filter icon</string>
     <string name="detail_location_icon">Location icon</string>
     <string name="detail_time_icon">Time icon</string>
+    <string name="profile_personal_icon">Personal icon</string>
+    <string name="profile_ratings_icon">Ratings icon</string>
+    <string name="profile_introduction_icon">Introduction icon</string>
+    <string name="profile_jobsdone_icon">Jobs done icon</string>
 
     <!-- Login screen -->
     <string name="sign_in_btn">SIGN IN</string>
@@ -44,5 +48,16 @@
     <!-- Detail screen -->
     <string name="details_label">Details</string>
     <string name="apply_btn">Apply</string>
+
+    <!-- Profile screen -->
+    <string name="profile_age_label">Age</string>
+    <string name="profile_studies_label">Studies</string>
+    <string name="profile_ratings_label">Ratings</string>
+    <string name="profile_personal_label">Personal</string>
+    <string name="profile_worker_label">Worker</string>
+    <string name="profile_publisher_label">Publisher</string>
+    <string name="profile_introduction_label">Introduction</string>
+    <string name="profile_jobsdone_label">Jobs done</string>
+
 
 </resources>
