@@ -43,6 +43,8 @@ public class AdvertisedJob {
 
     private String imageUrl;
 
+    private String time;
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User publisher;

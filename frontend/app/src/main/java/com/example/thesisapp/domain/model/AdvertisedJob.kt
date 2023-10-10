@@ -12,7 +12,8 @@ data class AdvertisedJob(
     val price: Int,
     val jobState: JobState,
     val publisher: User? = null,
-    val imageUrl: String
+    val imageUrl: String,
+    val time: String
 )
 
 fun JobResponse.toAdvertisedJob() =
@@ -25,7 +26,8 @@ fun JobResponse.toAdvertisedJob() =
         price = price,
         jobState = jobState,
         publisher = publisher,
-        imageUrl = imageUrl
+        imageUrl = imageUrl,
+        time = time
     )
 
 fun AdvertisedJob.toJobResponse() =
@@ -38,7 +40,8 @@ fun AdvertisedJob.toJobResponse() =
         price = price,
         jobState = jobState,
         publisher = publisher,
-        imageUrl = imageUrl
+        imageUrl = imageUrl,
+        time = time
     )
 
 fun RoomAdvertisedJob.toAdvertisedJob() =
@@ -51,7 +54,8 @@ fun RoomAdvertisedJob.toAdvertisedJob() =
         price = price,
         jobState = jobState,
         publisher = publisher,
-        imageUrl = imageUrl
+        imageUrl = imageUrl,
+        time = time
     )
 
 fun AdvertisedJob.toRoomAdvertisedJob() =
@@ -64,5 +68,6 @@ fun AdvertisedJob.toRoomAdvertisedJob() =
         price = price,
         jobState = jobState,
         publisher = publisher,
-        imageUrl = imageUrl
+        imageUrl = imageUrl,
+        time = time
     )

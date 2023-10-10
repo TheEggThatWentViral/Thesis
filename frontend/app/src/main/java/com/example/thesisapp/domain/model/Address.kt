@@ -2,14 +2,20 @@ package com.example.thesisapp.domain.model
 
 import com.example.thesisapp.data.disk.model.RoomAddress
 
-data class Address(
+class Address(
     val id: Long? = null,
     val country: String,
     val city: String,
     val zipCode: String,
     val street: String,
     val number: String
-)
+) {
+    override fun toString(): String {
+        return "$zipCode $city, $street $number"
+    }
+}
+
+
 
 fun RoomAddress.toAddress() {
     Address(

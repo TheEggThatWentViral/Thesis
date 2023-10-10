@@ -1,4 +1,4 @@
-package com.example.thesisapp.ui.home
+package com.example.thesisapp.ui.job.feed
 
 import com.example.thesisapp.domain.model.AdvertisedJob
 import de.palm.composestateevents.StateEventWithContent

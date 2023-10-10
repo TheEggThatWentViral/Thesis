@@ -6,21 +6,25 @@ import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.thesisapp.R
-import com.example.thesisapp.ui.home.HomePage
-import com.example.thesisapp.ui.jobs.JobsPage
+import com.example.thesisapp.ui.job.feed.HomePage
+import com.example.thesisapp.ui.job.management.JobsPage
 import com.example.thesisapp.ui.profile.ProfilePage
 
 fun NavGraphBuilder.addHomeGraph(
-    onNavigateToRoute: (String) -> Unit
+    onNavigateToRoute: (String) -> Unit,
+    onJobSelected: (Long, NavBackStackEntry) -> Unit,
+    onNavigateToList: (Int, NavBackStackEntry) -> Unit
 ) {
-    composable(HomeSections.FEED.route) {
+    composable(HomeSections.FEED.route) { from ->
         HomePage(
             onNavigateToRoute = onNavigateToRoute,
             getAdvertisedJobs = { listOf() },
-            onJobClick = {}
+            onJobClick = { id -> onJobSelected(id, from) },
+            onNavigateToList = { name -> onNavigateToList(name, from) }
         )
     }
     composable(HomeSections.JOBS.route) {

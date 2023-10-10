@@ -66,6 +66,7 @@ public class WebshopBackendApplication {
                             "35$",
                             JobState.ACTIVE,
                             "img",
+                            "8 hours",
                             user
                     )
             );
@@ -86,6 +87,7 @@ public class WebshopBackendApplication {
                             "50$",
                             JobState.ACTIVE,
                             "img",
+                            "2 days",
                             user
                     )
             );

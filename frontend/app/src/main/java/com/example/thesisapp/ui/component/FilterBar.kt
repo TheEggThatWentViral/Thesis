@@ -19,7 +19,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -54,7 +53,9 @@ fun FilterBar(
                     painter = painterResource(id = R.drawable.ic_filter),
                     tint = ThesisTheme.colors.brand,
                     contentDescription = stringResource(R.string.feed_filter_icon),
-                    modifier = Modifier.diagonalGradientBorder(
+                    modifier = Modifier
+                        .padding(2.dp)
+                        .diagonalGradientBorder(
                         colors = ThesisTheme.colors.interactiveSecondary,
                         shape = CircleShape
                     )
@@ -98,7 +99,7 @@ fun FilterChip(
         val pressed by interactionSource.collectIsPressedAsState()
         val backgroundPressed =
             if (pressed) {
-                Modifier.offsetGradientBackground(
+                Modifier.offsetGradientHorizontalBackground(
                     ThesisTheme.colors.interactiveSecondary,
                     200f,
                     0f
@@ -119,7 +120,7 @@ fun FilterChip(
         ) {
             Text(
                 text = filter.name,
-                style = MaterialTheme.typography.caption,
+                style = MaterialTheme.typography.overline,
                 maxLines = 1,
                 modifier = Modifier.padding(
                     horizontal = 20.dp,

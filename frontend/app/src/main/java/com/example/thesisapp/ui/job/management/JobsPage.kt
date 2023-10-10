@@ -1,4 +1,4 @@
-package com.example.thesisapp.ui.jobs
+package com.example.thesisapp.ui.job.management
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

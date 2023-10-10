@@ -16,5 +16,6 @@ data class JobResponse(
     val price: Int,
     val jobState: JobState,
     val publisher: User? = null,
-    val imageUrl: String
+    val imageUrl: String,
+    val time: String
 )

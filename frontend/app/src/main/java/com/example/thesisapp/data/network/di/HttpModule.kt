@@ -63,8 +63,4 @@ class HttpModule {
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-
-    @Provides
-    @Singleton
-    fun provideThesisApi(retrofit: Retrofit): ThesisApi = retrofit.create()
 }

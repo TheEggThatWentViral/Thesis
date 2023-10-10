@@ -1,4 +1,4 @@
-package com.example.thesisapp.ui.home
+package com.example.thesisapp.ui.job.feed
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

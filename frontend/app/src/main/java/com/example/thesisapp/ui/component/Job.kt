@@ -1,5 +1,6 @@
 package com.example.thesisapp.ui.component
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,12 +15,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -31,26 +34,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
 import com.example.thesisapp.R
 import com.example.thesisapp.domain.model.Address
 import com.example.thesisapp.domain.model.AdvertisedJob
 import com.example.thesisapp.domain.model.CollectionType
+import com.example.thesisapp.domain.model.Coordinates
 import com.example.thesisapp.domain.model.JobCollectionData
 import com.example.thesisapp.domain.model.JobState
+import com.example.thesisapp.ui.navigation.MainDestinations
 import com.example.thesisapp.ui.theme.ThesisTheme
+import com.example.thesisapp.ui.theme.ThesisappTheme
 import com.example.thesisapp.ui.util.mirroringIcon
 
-private val HighlightCardWidth = 170.dp
-private val HighlightCardPadding = 16.dp
+val HighlightCardWidth = 170.dp
+val HighlitedCardBoxHeight = 100.dp
+val HighlightCardPadding = 16.dp
 
 // The Cards show a gradient which spans 3 cards and scrolls with parallax.
 private val gradientWidth
@@ -65,7 +72,9 @@ fun JobCollection(
     onJobClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
     index: Int = 0,
-    highlight: Boolean = true
+    highlight: Boolean = true,
+    onCollectionClicked: (Int) -> Unit,
+    name: Int
 ) {
     Column(modifier = modifier) {
         Row(
@@ -73,6 +82,7 @@ fun JobCollection(
             modifier = Modifier
                 .heightIn(min = 56.dp)
                 .padding(start = 24.dp)
+                .clickable { onCollectionClicked(name) }
         ) {
             Text(
                 text = jobCollectionData.name,
@@ -128,7 +138,7 @@ private fun HighlightedJob(
         contentPadding = PaddingValues(start = 24.dp, end = 24.dp)
     ) {
         itemsIndexed(jobs) { index, snack ->
-            HighlightSnackItem(
+            HighlightJobItem(
                 snack,
                 onJobClick,
                 index,
@@ -176,7 +186,7 @@ fun JobItem(
                 .clickable(onClick = { onJobClick(job.id ?: 1L) })
                 .padding(8.dp)
         ) {
-            SnackImage(
+            JobImage(
                 imageUrl = job.imageUrl,
                 elevation = 4.dp,
                 contentDescription = null,
@@ -193,9 +203,9 @@ fun JobItem(
 }
 
 @Composable
-private fun HighlightSnackItem(
-    snack: AdvertisedJob,
-    onSnackClick: (Long) -> Unit,
+private fun HighlightJobItem(
+    job: AdvertisedJob,
+    onJobClicked: (Long) -> Unit,
     index: Int,
     gradient: List<Color>,
     gradientWidth: Float,
@@ -205,6 +215,7 @@ private fun HighlightSnackItem(
     val left = index * with(LocalDensity.current) {
         (HighlightCardWidth + HighlightCardPadding).toPx()
     }
+
     ThesisCard(
         modifier = modifier
             .size(
@@ -215,7 +226,7 @@ private fun HighlightSnackItem(
     ) {
         Column(
             modifier = Modifier
-                .clickable(onClick = { onSnackClick(snack.id ?: 1L) })
+                .clickable { onJobClicked(job.id ?: 1L) }
                 .fillMaxSize()
         ) {
             Box(
@@ -228,10 +239,10 @@ private fun HighlightSnackItem(
                     modifier = Modifier
                         .height(100.dp)
                         .fillMaxWidth()
-                        .offsetGradientBackground(gradient, gradientWidth, gradientOffset)
+                        .offsetGradientHorizontalBackground(gradient, gradientWidth, gradientOffset)
                 )
-                SnackImage(
-                    imageUrl = snack.imageUrl,
+                JobImage(
+                    imageUrl = job.imageUrl,
                     contentDescription = null,
                     modifier = Modifier
                         .size(120.dp)
@@ -240,7 +251,7 @@ private fun HighlightSnackItem(
             }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = snack.title,
+                text = job.title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.h6,
@@ -249,26 +260,139 @@ private fun HighlightSnackItem(
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = snack.description,
-                style = MaterialTheme.typography.body1,
+                text = job.price.toString() + " $",
+                style = MaterialTheme.typography.h5,
                 color = ThesisTheme.colors.textHelp,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .align(Alignment.End)
             )
         }
     }
 }
 
 @Composable
-fun SnackImage(
+fun HighlightJobItemWide(
+    job: AdvertisedJob,
+    onJobClicked: (Long) -> Unit,
+    index: Int,
+    gradient: List<Color>,
+    gradientHeight: Float,
+    scroll: Int,
+    modifier: Modifier = Modifier
+) {
+    val top = index * with(LocalDensity.current) {
+        (HighlitedCardBoxHeight + HighlightCardPadding).toPx()
+    }
+
+    ThesisCard(
+        modifier = modifier
+            .height(250.dp)
+            .fillMaxWidth()
+            .padding(
+                bottom = 12.dp,
+                start = 12.dp,
+                end = 12.dp
+            )
+    ) {
+        Column(
+            modifier = Modifier
+                .clickable(onClick = { onJobClicked(job.id ?: 1L) })
+                .fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .height(140.dp)
+                    .fillMaxWidth()
+            ) {
+                val gradientOffset = top - (scroll / 3f)
+                Box(
+                    modifier = Modifier
+                        .height(100.dp)
+                        .fillMaxWidth()
+                        .offsetGradientVerticalBackground(gradient, gradientHeight, gradientOffset)
+                )
+                JobImage(
+                    imageUrl = job.imageUrl,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .width(240.dp)
+                        .align(Alignment.BottomCenter),
+                    shape = MaterialTheme.shapes.medium
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = job.title,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.h6,
+                color = ThesisTheme.colors.textSecondary,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Row {
+                Text(
+                    text = job.price.toString() + " $",
+                    style = MaterialTheme.typography.body2,
+                    color = ThesisTheme.colors.textHelp,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+
+                Text(
+                    text = "   |   10 km",
+                    style = MaterialTheme.typography.body2,
+                    color = ThesisTheme.colors.textHelp
+                )
+
+                Text(
+                    text = "   |   " + job.time,
+                    style = MaterialTheme.typography.body2,
+                    color = ThesisTheme.colors.textHelp
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(end = 16.dp)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.list_details_label),
+                    style = MaterialTheme.typography.caption,
+                    color = ThesisTheme.colors.brand
+                )
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_arrow_forward),
+                    tint = ThesisTheme.colors.brand,
+                    contentDescription = stringResource(R.string.list_arrow_icon),
+                    modifier = Modifier
+                        .padding(start = 4.dp)
+                        .size(22.dp)
+                        .diagonalGradientBorder(
+                            colors = ThesisTheme.colors.interactiveSecondary,
+                            shape = CircleShape
+                        )
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun JobImage(
     imageUrl: String,
     contentDescription: String?,
     modifier: Modifier = Modifier,
-    elevation: Dp = 0.dp
+    elevation: Dp = 0.dp,
+    shape: Shape = CircleShape
 ) {
     ThesisSurface(
         color = Color.LightGray,
         elevation = elevation,
-        shape = CircleShape,
+        shape = shape,
         modifier = modifier
     ) {
        /* AsyncImage(
@@ -294,11 +418,13 @@ val advertisedJobs = listOf(
     AdvertisedJob(
         id = 1L,
         title = "Cleaning",
-        description = "A cleaning is need in my house",
-        address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
+        description = "A cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house v cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house",
+        address = Address(country = "Hungary", city = "Budapest", zipCode = "1067", street = "Rákóczi utca", number = "10."),
         imageUrl = "",
-        price = "30$",
-        jobState = JobState.ACTIVE
+        price = 30,
+        jobState = JobState.ACTIVE,
+        coordinates = Coordinates(0L, 0L),
+        time = "8 hours"
     ),
     AdvertisedJob(
         id = 2L,
@@ -306,8 +432,10 @@ val advertisedJobs = listOf(
         description = "Pack orders in a warehouse",
         address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
         imageUrl = "",
-        price = "45$",
-        jobState = JobState.ACTIVE
+        price = 45,
+        jobState = JobState.ACTIVE,
+        coordinates = Coordinates(0L, 0L),
+        time = "12 hours"
     ),
     AdvertisedJob(
         id = 3L,
@@ -315,8 +443,10 @@ val advertisedJobs = listOf(
         description = "Searching fro a driver",
         address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
         imageUrl = "",
-        price = "50$",
-        jobState = JobState.ACTIVE
+        price = 50,
+        jobState = JobState.ACTIVE,
+        coordinates = Coordinates(0L, 0L),
+        time = "2 days"
     ),
     AdvertisedJob(
         id = 4L,
@@ -324,7 +454,43 @@ val advertisedJobs = listOf(
         description = "Watching out for dogs",
         address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
         imageUrl = "",
-        price = "26$",
-        jobState = JobState.ACTIVE
+        price = 26,
+        jobState = JobState.ACTIVE,
+        coordinates = Coordinates(0L, 0L),
+        time = "4 hours"
     )
 )
+
+@Preview("default")
+@Preview("dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview("large font", fontScale = 2f)
+@Composable
+fun JobCardPreview() {
+    ThesisappTheme {
+        val job = advertisedJobs.first()
+        HighlightJobItem(
+            job = job,
+            onJobClicked = { },
+            index = 0,
+            gradient = ThesisTheme.colors.gradient6_1,
+            gradientWidth = gradientWidth,
+            scroll = 0
+        )
+    }
+}
+
+@Preview
+@Composable
+fun WideJobCardPreview() {
+    ThesisappTheme {
+        val job = advertisedJobs.first()
+        HighlightJobItemWide(
+            job = job,
+            onJobClicked = { },
+            index = 0,
+            gradient = ThesisTheme.colors.gradient6_1,
+            gradientHeight = gradientWidth,
+            scroll = 0
+        )
+    }
+}

@@ -1,6 +1,7 @@
 package com.example.thesisapp.data.network.di
 
 import com.example.thesisapp.data.network.api.AuthenticationApi
+import com.example.thesisapp.data.network.source.AuthenticationNetworkDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,4 +18,10 @@ class LoginModule {
     fun provideAuthenticationApi(@HttpModule.LoginClient retrofit: Retrofit): AuthenticationApi {
         return retrofit.create(AuthenticationApi::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideAuthenticationNetworkDataSource(
+        authenticationApi: AuthenticationApi
+    ): AuthenticationNetworkDataSource = AuthenticationNetworkDataSource(authenticationApi)
 }
