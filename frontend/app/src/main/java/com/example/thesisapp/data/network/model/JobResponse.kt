@@ -17,5 +17,6 @@ data class JobResponse(
     val jobState: JobState,
     val publisher: User? = null,
     val imageUrl: String,
-    val time: String
+    val time: String,
+    val newMessage: Boolean
 )

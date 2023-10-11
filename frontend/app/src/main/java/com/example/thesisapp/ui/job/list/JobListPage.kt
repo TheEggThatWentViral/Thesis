@@ -1,5 +1,6 @@
 package com.example.thesisapp.ui.job.list
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -48,36 +49,40 @@ fun JobListPage(
             else -> "List"
         }
 
-        LazyColumn {
+        Column {
 
-            item {
-                Text(
-                    text = name,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.h4,
-                    color = ThesisTheme.colors.brand,
-                    modifier = Modifier.padding(16.dp)
-                )
-                ThesisDivider(thickness = 2.dp)
-                Spacer(modifier = Modifier.padding(vertical = 4.dp))
-            }
-            item {
-                FilterBar(filters = filters, onShowFilters = {})
-                Spacer(modifier = Modifier.padding(vertical = 12.dp))
-            }
-            itemsIndexed(jobs) { index, job ->
+            Text(
+                text = name,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.h4,
+                color = ThesisTheme.colors.brand,
+                modifier = Modifier.padding(16.dp)
+            )
 
-                HighlightJobItemWide(
-                    job = job,
-                    index = index,
-                    onJobClicked = onJobClicked,
-                    gradient = gradient,
-                    gradientHeight = gradientHeight,
-                    scroll = scroll.value
-                )
-            }
+            ThesisDivider(thickness = 2.dp)
 
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+
+            FilterBar(filters = filters, onShowFilters = {})
+
+            Spacer(modifier = Modifier.padding(vertical = 12.dp))
+
+            LazyColumn {
+
+                itemsIndexed(jobs) { index, job ->
+
+                    HighlightJobItemWide(
+                        job = job,
+                        index = index,
+                        onJobClicked = onJobClicked,
+                        gradient = gradient,
+                        gradientHeight = gradientHeight,
+                        scroll = scroll.value
+                    )
+                }
+
+            }
         }
     }
 }

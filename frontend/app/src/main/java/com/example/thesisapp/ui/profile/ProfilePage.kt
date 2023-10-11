@@ -35,10 +35,12 @@ import androidx.compose.ui.unit.dp
 import com.example.thesisapp.R
 import com.example.thesisapp.ui.component.HighlightCardPadding
 import com.example.thesisapp.ui.component.HighlightCardWidth
+import com.example.thesisapp.ui.component.HighlightedJob
 import com.example.thesisapp.ui.component.ThesisScaffold
 import com.example.thesisapp.ui.component.ThesisBottomBar
 import com.example.thesisapp.ui.component.ThesisDivider
 import com.example.thesisapp.ui.component.ThesisSurface
+import com.example.thesisapp.ui.component.advertisedJobs
 import com.example.thesisapp.ui.component.diagonalGradientBorder
 import com.example.thesisapp.ui.component.offsetGradientHorizontalBackground
 import com.example.thesisapp.ui.navigation.HomeSections
@@ -362,6 +364,32 @@ fun JobsDone() {
             color = ThesisTheme.colors.textPrimary.copy(alpha = 0.50f),
             thickness = 2.dp,
             modifier = Modifier.padding(horizontal = 16.dp)
+        )
+
+        Text(
+            text = stringResource(id = R.string.profile_as_worker_label),
+            style = MaterialTheme.typography.h6,
+            color = ThesisTheme.colors.textSecondary,
+            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp, start = 16.dp)
+        )
+
+        HighlightedJob(
+            index = 1,
+            jobs = advertisedJobs,
+            onJobClick = {}
+        )
+
+        Text(
+            text = stringResource(id = R.string.profile_as_publisher_label),
+            style = MaterialTheme.typography.h6,
+            color = ThesisTheme.colors.textSecondary,
+            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp, start = 16.dp)
+        )
+
+        HighlightedJob(
+            index = 2,
+            jobs = advertisedJobs,
+            onJobClick = {}
         )
     }
 }

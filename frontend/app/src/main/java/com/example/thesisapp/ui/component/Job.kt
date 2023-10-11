@@ -2,6 +2,7 @@ package com.example.thesisapp.ui.component
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -116,7 +117,7 @@ fun JobCollection(
 }
 
 @Composable
-private fun HighlightedJob(
+fun HighlightedJob(
     index: Int,
     jobs: List<AdvertisedJob>,
     onJobClick: (Long) -> Unit,
@@ -282,7 +283,8 @@ fun HighlightJobItemWide(
     gradient: List<Color>,
     gradientHeight: Float,
     scroll: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isDetailsMode: Boolean = true
 ) {
     val top = index * with(LocalDensity.current) {
         (HighlightCardBoxHeight + HighlightCardPadding).toPx()
@@ -356,29 +358,85 @@ fun HighlightJobItemWide(
                 )
             }
             Spacer(modifier = Modifier.height(4.dp))
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .align(Alignment.End)
-                    .padding(end = 16.dp)
-            ) {
-                Text(
-                    text = stringResource(id = R.string.list_details_label),
-                    style = MaterialTheme.typography.caption,
-                    color = ThesisTheme.colors.brand
-                )
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_arrow_forward),
-                    tint = ThesisTheme.colors.brand,
-                    contentDescription = stringResource(R.string.list_arrow_icon),
+
+            if (isDetailsMode) {
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .padding(start = 4.dp)
-                        .size(22.dp)
-                        .diagonalGradientBorder(
-                            colors = ThesisTheme.colors.interactiveSecondary,
-                            shape = CircleShape
+                        .align(Alignment.End)
+                        .padding(end = 16.dp)
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.list_details_label),
+                        style = MaterialTheme.typography.caption,
+                        color = ThesisTheme.colors.brand
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_arrow_forward),
+                        tint = ThesisTheme.colors.brand,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(22.dp)
+                            .diagonalGradientBorder(
+                                colors = ThesisTheme.colors.interactiveSecondary,
+                                shape = CircleShape
+                            )
+                    )
+                }
+            } else {
+
+                val iconState = when (job.jobState) {
+                    JobState.ACTIVE -> R.drawable.ic_question
+                    JobState.INACTIVE -> R.drawable.ic_question
+                    JobState.APPROVED -> R.drawable.ic_done
+                    else -> R.drawable.ic_done
+                }
+
+                val colorState = when (job.jobState) {
+                    JobState.ACTIVE -> ThesisTheme.colors.orange
+                    JobState.INACTIVE -> ThesisTheme.colors.orange
+                    JobState.APPROVED -> ThesisTheme.colors.green
+                    else -> ThesisTheme.colors.green
+                }
+
+                Row(
+                    modifier = Modifier
+                        .padding(end = 20.dp)
+                        .align(Alignment.End)
+                ) {
+                    Icon(
+                        painter = painterResource(id = iconState),
+                        tint = colorState,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(26.dp)
+                            .border(
+                                width = 2.dp,
+                                color = colorState,
+                                shape = CircleShape
+                            )
+                    )
+
+                    if (job.newMessage) {
+
+                        Icon(
+                            painter = painterResource(id = R.drawable.baseline_chat_24),
+                            tint = ThesisTheme.colors.checkFocus,
+                            contentDescription = stringResource(R.string.list_arrow_icon),
+                            modifier = Modifier
+                                .padding(start = 4.dp)
+                                .size(26.dp)
+                                .border(
+                                    width = 2.dp,
+                                    color = ThesisTheme.colors.checkFocus,
+                                    shape = CircleShape
+                                )
                         )
-                )
+                    }
+                }
             }
         }
     }
@@ -494,6 +552,23 @@ fun WideJobCardPreview() {
             gradient = ThesisTheme.colors.gradient6_1,
             gradientHeight = gradientWidth,
             scroll = 0
+        )
+    }
+}
+
+@Preview
+@Composable
+fun WideMyJobCardPreview() {
+    ThesisappTheme {
+        val job = advertisedJobs.first()
+        HighlightJobItemWide(
+            job = job,
+            onJobClicked = { },
+            index = 0,
+            gradient = ThesisTheme.colors.gradient6_1,
+            gradientHeight = gradientWidth,
+            scroll = 0,
+            isDetailsMode = false
         )
     }
 }

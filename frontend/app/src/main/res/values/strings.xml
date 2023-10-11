@@ -58,6 +58,8 @@
     <string name="profile_publisher_label">Publisher</string>
     <string name="profile_introduction_label">Introduction</string>
     <string name="profile_jobsdone_label">Jobs done</string>
+    <string name="profile_as_worker_label">As worker</string>
+    <string name="profile_as_publisher_label">As publisher</string>
 
 
 </resources>
