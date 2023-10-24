@@ -14,6 +14,7 @@ data class UserResponse(
     val password: String,
     val roles: Collection<UserRole> = ArrayList(),
     val jobsDone: Collection<AdvertisedJob> = ArrayList(),
-    val workerRating: Int,
-    val publisherRating: Int
+    val workerRating: Float,
+    val publisherRating: Float,
+    val profilePicture: String
 )

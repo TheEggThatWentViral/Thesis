@@ -16,6 +16,7 @@ object MainDestinations {
     const val JOB_ID_KEY = "jobId"
     const val JOB_LIST_ROUTE = "list"
     const val JOB_LIST_NAME_KEY = "listName"
+    const val JOB_STATE_DETAIL_ROUTE = "stateDetail"
 }
 
 @Composable
@@ -60,6 +61,12 @@ class ThesisNavController(
             navController.navigate(
                 "${MainDestinations.JOB_LIST_ROUTE}/$nameId"
             )
+        }
+    }
+
+    fun navigateToStateDetails(jobId: Long, from: NavBackStackEntry) {
+        if (from.lifecycleIsResumed()) {
+            navController.navigate("${MainDestinations.JOB_STATE_DETAIL_ROUTE}/$jobId")
         }
     }
 }

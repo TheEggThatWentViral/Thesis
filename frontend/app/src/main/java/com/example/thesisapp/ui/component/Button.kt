@@ -96,18 +96,20 @@ fun ThesisButton(
 fun ThesisButtonGradient(
     modifier: Modifier = Modifier,
     label: String = "Demo",
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    contentColor: Color = ThesisTheme.colors.loginBasic,
+    borderColors: List<Color> = ThesisTheme.colors.interactiveSecondary
 ) {
     ThesisSurface(
         color = ThesisTheme.colors.uiBackground,
-        contentColor = ThesisTheme.colors.loginBasic,
+        contentColor = contentColor,
         shape = Shapes.small,
         modifier = modifier
     ) {
         Box(
             modifier = Modifier
                 .diagonalGradientBorder(
-                    colors = ThesisTheme.colors.interactiveSecondary,
+                    colors = borderColors,
                     shape = Shapes.small
                 )
                 .height(ButtonDefaults.MinHeight)

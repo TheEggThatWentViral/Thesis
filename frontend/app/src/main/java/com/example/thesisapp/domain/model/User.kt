@@ -12,8 +12,9 @@ data class User(
     val password: String,
     val roles: Collection<UserRole> = ArrayList(),
     val jobsDone: Collection<AdvertisedJob> = ArrayList(),
-    val workerRating: Int,
-    val publisherRating: Int
+    val workerRating: Float,
+    val publisherRating: Float,
+    val profilePicture: String
 )
 
 fun RoomUser.toUser() {
@@ -27,7 +28,8 @@ fun RoomUser.toUser() {
         roles = roles,
         jobsDone = jobsDone,
         workerRating = workerRating,
-        publisherRating = publisherRating
+        publisherRating = publisherRating,
+        profilePicture = profilePicture
     )
 }
 
@@ -42,7 +44,8 @@ fun User.toRoomUser() {
         roles = roles,
         jobsDone = jobsDone,
         workerRating = workerRating,
-        publisherRating = publisherRating
+        publisherRating = publisherRating,
+        profilePicture = profilePicture
     )
 }
 
@@ -57,7 +60,8 @@ fun UserResponse.toUser() {
         roles = roles,
         jobsDone = jobsDone,
         workerRating = workerRating,
-        publisherRating = publisherRating
+        publisherRating = publisherRating,
+        profilePicture = profilePicture
     )
 }
 
@@ -72,6 +76,7 @@ fun User.toUserResponse() {
         roles = roles,
         jobsDone = jobsDone,
         workerRating = workerRating,
-        publisherRating = publisherRating
+        publisherRating = publisherRating,
+        profilePicture = profilePicture
     )
 }

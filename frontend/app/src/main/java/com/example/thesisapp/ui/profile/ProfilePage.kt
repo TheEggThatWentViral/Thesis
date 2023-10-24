@@ -95,7 +95,7 @@ fun LowerSurface() {
             modifier = Modifier.padding(start = 16.dp)
         ) {
             Text(
-                text = "Nagy",
+                text = "Jordan",
                 style = MaterialTheme.typography.h4,
                 color = ThesisTheme.colors.uiBackground,
                 maxLines = 1,
@@ -103,7 +103,7 @@ fun LowerSurface() {
             )
 
             Text(
-                text = "Marcell",
+                text = "Benjamin",
                 style = MaterialTheme.typography.h4,
                 color = ThesisTheme.colors.uiBackground,
                 maxLines = 1,
@@ -320,7 +320,7 @@ fun Introduction() {
         )
 
         Text(
-            text = "Hi, my name is Nagy Marcell and I'm a university student. Currently I'm looking for a summer job as I'm trying to save money for a holiday with my friends. I'm studying IT so I would prefer to do any IT related stuff.",
+            text = "Hi, my name is NJordan Benjamin and I'm a university student. Currently I'm looking for a summer job as I'm trying to save money for a holiday with my friends. I'm studying IT so I would prefer to do any IT related stuff.",
             style = MaterialTheme.typography.body2,
             color = ThesisTheme.colors.textHelp,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 20.dp)

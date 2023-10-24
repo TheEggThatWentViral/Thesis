@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import com.example.thesisapp.ui.job.detail.JobDetailPage
 import com.example.thesisapp.ui.job.list.JobListPage
+import com.example.thesisapp.ui.job.state.StateDetailsPage
 import com.example.thesisapp.ui.navigation.AuthenticationSections
 import com.example.thesisapp.ui.navigation.MainDestinations
 import com.example.thesisapp.ui.navigation.addAuthenticationGraph
@@ -40,7 +41,8 @@ class MainActivity : ComponentActivity() {
                         upPress = thesisNavController::upPress,
                         onNavigateToRoute = thesisNavController::navigateToBottomBarRoute,
                         onJobSelected = thesisNavController::navigateToJobDetail,
-                        onNavigateToList = thesisNavController::navigateToJobList
+                        onNavigateToList = thesisNavController::navigateToJobList,
+                        onNavigateToStateDetails = thesisNavController::navigateToStateDetails
                     )
                 }
             }
@@ -51,14 +53,20 @@ class MainActivity : ComponentActivity() {
         upPress: () -> Unit,
         onNavigateToRoute: (String) -> Unit,
         onJobSelected: (Long, NavBackStackEntry) -> Unit,
-        onNavigateToList: (Int, NavBackStackEntry) -> Unit
+        onNavigateToList: (Int, NavBackStackEntry) -> Unit,
+        onNavigateToStateDetails: (Long, NavBackStackEntry) -> Unit
     ) {
         navigation(
             route = MainDestinations.AUTHENTICATION_ROUTE,
             startDestination = AuthenticationSections.LOGIN.route
         ) {
             addAuthenticationGraph(onNavigateToRoute)
-            addHomeGraph(onNavigateToRoute, onJobSelected, onNavigateToList)
+            addHomeGraph(
+                onNavigateToRoute,
+                onJobSelected,
+                onNavigateToList,
+                onNavigateToStateDetails
+            )
         }
 
         composable(
@@ -72,11 +80,22 @@ class MainActivity : ComponentActivity() {
 
         composable(
             route = "${MainDestinations.JOB_LIST_ROUTE}/{${MainDestinations.JOB_LIST_NAME_KEY}}",
-            arguments = listOf(navArgument(MainDestinations.JOB_LIST_NAME_KEY) { type = NavType.IntType})
+            arguments = listOf(
+                navArgument(MainDestinations.JOB_LIST_NAME_KEY) { type = NavType.IntType}
+            )
         ) { backStackEntry ->
             val arguments = requireNotNull(backStackEntry.arguments)
             val name = arguments.getInt(MainDestinations.JOB_LIST_NAME_KEY)
             JobListPage(name) { id -> onJobSelected(id, backStackEntry) }
+        }
+
+        composable(
+            route = "${MainDestinations.JOB_STATE_DETAIL_ROUTE}/{${MainDestinations.JOB_ID_KEY}}",
+            arguments = listOf(navArgument(MainDestinations.JOB_ID_KEY) { type = NavType.LongType})
+        ) { backStackEntry ->
+            val arguments = requireNotNull(backStackEntry.arguments)
+            val jobId = arguments.getLong(MainDestinations.JOB_ID_KEY)
+            StateDetailsPage(jobId = jobId)
         }
     }
 }

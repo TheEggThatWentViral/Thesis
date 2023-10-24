@@ -1,10 +1,7 @@
 package com.example.thesisapp.ui.job.management
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
@@ -12,12 +9,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
+import com.example.thesisapp.R
 import com.example.thesisapp.ui.component.HighlightCardBoxHeight
 import com.example.thesisapp.ui.component.HighlightCardPadding
 import com.example.thesisapp.ui.component.HighlightJobItemWide
@@ -31,7 +30,8 @@ import com.example.thesisapp.ui.theme.ThesisappTheme
 
 @Composable
 fun JobsPage(
-    onNavigateToRoute: (String) -> Unit
+    onNavigateToRoute: (String) -> Unit,
+    onNavigateToStateDetails: (Long) -> Unit
 ) {
     ThesisScaffold(
         bottomBar = {
@@ -52,7 +52,7 @@ fun JobsPage(
 
         Column {
             Text(
-                text = "Your jobs",
+                text = stringResource(id = R.string.your_jobs_label),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.h4,
@@ -64,9 +64,9 @@ fun JobsPage(
 
             LazyColumn {
 
-                item{
+                item {
                     Text(
-                        text = "Published",
+                        text = stringResource(id = R.string.published_label),
                         style = MaterialTheme.typography.h6,
                         color = ThesisTheme.colors.brand,
                         modifier = Modifier.padding(
@@ -81,10 +81,11 @@ fun JobsPage(
                     HighlightJobItemWide(
                         job = job,
                         index = index,
-                        onJobClicked = {},
+                        onJobClicked = onNavigateToStateDetails,
                         gradient = gradientLight,
                         gradientHeight = gradientHeight,
-                        scroll = scroll.value
+                        scroll = scroll.value,
+                        isDetailsMode = false
                     )
                 }
                 item {
@@ -93,9 +94,9 @@ fun JobsPage(
                         modifier = Modifier.padding(top = 8.dp)
                     )
                 }
-                item{
+                item {
                     Text(
-                        text = "Applied for",
+                        text = stringResource(id = R.string.applied_for_label),
                         style = MaterialTheme.typography.h6,
                         color = ThesisTheme.colors.brand,
                         modifier = Modifier.padding(
@@ -105,15 +106,16 @@ fun JobsPage(
                         )
                     )
                 }
-                itemsIndexed(jobs.filter { job -> ((job.id?.div(2))?.rem(2)) == 0L }) { index, job ->
+                itemsIndexed(jobs.filter { job -> ((job.id?.div(2))?.rem(2)) != 0L }) { index, job ->
 
                     HighlightJobItemWide(
                         job = job,
                         index = index,
-                        onJobClicked = {},
+                        onJobClicked = onNavigateToStateDetails,
                         gradient = gradientDark,
                         gradientHeight = gradientHeight,
-                        scroll = scroll.value
+                        scroll = scroll.value,
+                        isDetailsMode = false
                     )
                 }
             }
@@ -126,7 +128,8 @@ fun JobsPage(
 fun MyJobsPagePreview() {
     ThesisappTheme {
         JobsPage(
-            onNavigateToRoute = {}
+            onNavigateToRoute = {},
+            onNavigateToStateDetails = {}
         )
     }
 }

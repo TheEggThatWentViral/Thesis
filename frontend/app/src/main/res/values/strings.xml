@@ -61,5 +61,21 @@
     <string name="profile_as_worker_label">As worker</string>
     <string name="profile_as_publisher_label">As publisher</string>
 
+    <!-- Job managing screen -->
+    <string name="your_jobs_label">Your jobs</string>
+    <string name="published_label">Published</string>
+    <string name="applied_for_label">Applied for</string>
+
+    <!-- Job managing screen -->
+    <string name="time_label">Time</string>
+    <string name="address_label">Address</string>
+    <string name="publisher_label">Publisher</string>
+    <string name="applicants_label">Applicants</string>
+    <string name="delete_btn">Delete</string>
+    <string name="edit_btn">Edit</string>
+    <string name="active_label">Active</string>
+    <string name="inactive_label">Ongoing</string>
+    <string name="approval_label">Waiting for approval</string>
+    <string name="done_label">Done</string>
 
 </resources>

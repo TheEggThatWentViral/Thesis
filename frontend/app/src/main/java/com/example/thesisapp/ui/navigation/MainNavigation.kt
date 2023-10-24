@@ -17,7 +17,8 @@ import com.example.thesisapp.ui.profile.ProfilePage
 fun NavGraphBuilder.addHomeGraph(
     onNavigateToRoute: (String) -> Unit,
     onJobSelected: (Long, NavBackStackEntry) -> Unit,
-    onNavigateToList: (Int, NavBackStackEntry) -> Unit
+    onNavigateToList: (Int, NavBackStackEntry) -> Unit,
+    onNavigateToStateDetails: (Long, NavBackStackEntry) -> Unit
 ) {
     composable(HomeSections.FEED.route) { from ->
         HomePage(
@@ -27,8 +28,11 @@ fun NavGraphBuilder.addHomeGraph(
             onNavigateToList = { name -> onNavigateToList(name, from) }
         )
     }
-    composable(HomeSections.JOBS.route) {
-        JobsPage(onNavigateToRoute = onNavigateToRoute)
+    composable(HomeSections.JOBS.route) { from ->
+        JobsPage(
+            onNavigateToRoute = onNavigateToRoute,
+            onNavigateToStateDetails = { id -> onNavigateToStateDetails(id, from)}
+        )
     }
     composable(HomeSections.PROFILE.route) {
         ProfilePage(onNavigateToRoute = onNavigateToRoute)

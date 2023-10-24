@@ -50,6 +50,7 @@ import com.example.thesisapp.domain.model.CollectionType
 import com.example.thesisapp.domain.model.Coordinates
 import com.example.thesisapp.domain.model.JobCollectionData
 import com.example.thesisapp.domain.model.JobState
+import com.example.thesisapp.domain.model.User
 import com.example.thesisapp.ui.theme.ThesisTheme
 import com.example.thesisapp.ui.theme.ThesisappTheme
 import com.example.thesisapp.ui.util.mirroringIcon
@@ -151,7 +152,7 @@ fun HighlightedJob(
 }
 
 @Composable
-private fun Jobs(
+fun Jobs(
     jobs: List<AdvertisedJob>,
     onJobClick: (Long) -> Unit,
     modifier: Modifier = Modifier
@@ -389,14 +390,14 @@ fun HighlightJobItemWide(
 
                 val iconState = when (job.jobState) {
                     JobState.ACTIVE -> R.drawable.ic_question
-                    JobState.INACTIVE -> R.drawable.ic_question
+                    JobState.INACTIVE -> R.drawable.ic_warning
                     JobState.APPROVED -> R.drawable.ic_done
                     else -> R.drawable.ic_done
                 }
 
                 val colorState = when (job.jobState) {
                     JobState.ACTIVE -> ThesisTheme.colors.orange
-                    JobState.INACTIVE -> ThesisTheme.colors.orange
+                    JobState.INACTIVE -> ThesisTheme.colors.checkFocus
                     JobState.APPROVED -> ThesisTheme.colors.green
                     else -> ThesisTheme.colors.green
                 }
@@ -406,37 +407,171 @@ fun HighlightJobItemWide(
                         .padding(end = 20.dp)
                         .align(Alignment.End)
                 ) {
+
+                    if (job.newMessage) {
+
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chat_new),
+                            tint = ThesisTheme.colors.checkFocus,
+                            contentDescription = stringResource(R.string.list_arrow_icon),
+                            modifier = Modifier.size(22.dp)
+                        )
+                    }
+
                     Icon(
                         painter = painterResource(id = iconState),
                         tint = colorState,
                         contentDescription = stringResource(R.string.list_arrow_icon),
                         modifier = Modifier
                             .padding(start = 4.dp)
-                            .size(26.dp)
+                            .size(22.dp)
                             .border(
                                 width = 2.dp,
                                 color = colorState,
                                 shape = CircleShape
                             )
                     )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun HighlightPersonItemWide(
+    user: User,
+    onUserClicked: (Long) -> Unit,
+    index: Int,
+    gradient: List<Color>,
+    gradientHeight: Float,
+    scroll: Int,
+    modifier: Modifier = Modifier,
+    isDetailsMode: Boolean = true
+) {
+    val top = index * with(LocalDensity.current) {
+        (HighlightCardBoxHeight + HighlightCardPadding).toPx()
+    }
+
+    ThesisCard(
+        modifier = modifier
+            .height(250.dp)
+            .fillMaxWidth()
+            .padding(
+                bottom = 12.dp,
+                start = 12.dp,
+                end = 12.dp
+            )
+    ) {
+        Column(
+            modifier = Modifier
+                .clickable(onClick = {})
+                .fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .height(140.dp)
+                    .fillMaxWidth()
+            ) {
+                val gradientOffset = top - (scroll / 3f)
+                Box(
+                    modifier = Modifier
+                        .height(100.dp)
+                        .fillMaxWidth()
+                        .offsetGradientVerticalBackground(gradient, gradientHeight, gradientOffset)
+                )
+                JobImage(
+                    imageUrl = user.profilePicture,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .width(120.dp)
+                        .align(Alignment.BottomCenter),
+                    shape = CircleShape
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "${user.firstName} ${user.lastName}",
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.h6,
+                color = ThesisTheme.colors.textSecondary,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+
+            if (isDetailsMode) {
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .align(Alignment.End)
+                        .padding(end = 16.dp)
+                ) {
+                    Text(
+                        text = "Chat",
+                        style = MaterialTheme.typography.caption,
+                        color = ThesisTheme.colors.brand
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_arrow_forward),
+                        tint = ThesisTheme.colors.brand,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(22.dp)
+                            .diagonalGradientBorder(
+                                colors = ThesisTheme.colors.interactiveSecondary,
+                                shape = CircleShape
+                            )
+                    )
+                }
+            } else {
+
+               /* val iconState = when (job.jobState) {
+                    JobState.ACTIVE -> R.drawable.ic_question
+                    JobState.INACTIVE -> R.drawable.ic_warning
+                    JobState.APPROVED -> R.drawable.ic_done
+                    else -> R.drawable.ic_done
+                }
+
+                val colorState = when (job.jobState) {
+                    JobState.ACTIVE -> ThesisTheme.colors.orange
+                    JobState.INACTIVE -> ThesisTheme.colors.checkFocus
+                    JobState.APPROVED -> ThesisTheme.colors.green
+                    else -> ThesisTheme.colors.green
+                }
+
+                Row(
+                    modifier = Modifier
+                        .padding(end = 20.dp)
+                        .align(Alignment.End)
+                ) {
 
                     if (job.newMessage) {
 
                         Icon(
-                            painter = painterResource(id = R.drawable.baseline_chat_24),
+                            painter = painterResource(id = R.drawable.ic_chat_new),
                             tint = ThesisTheme.colors.checkFocus,
                             contentDescription = stringResource(R.string.list_arrow_icon),
-                            modifier = Modifier
-                                .padding(start = 4.dp)
-                                .size(26.dp)
-                                .border(
-                                    width = 2.dp,
-                                    color = ThesisTheme.colors.checkFocus,
-                                    shape = CircleShape
-                                )
+                            modifier = Modifier.size(22.dp)
                         )
                     }
-                }
+
+                    Icon(
+                        painter = painterResource(id = iconState),
+                        tint = colorState,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(22.dp)
+                            .border(
+                                width = 2.dp,
+                                color = colorState,
+                                shape = CircleShape
+                            )
+                    )
+                }*/
             }
         }
     }
@@ -485,7 +620,8 @@ val advertisedJobs = listOf(
         price = 30,
         jobState = JobState.ACTIVE,
         coordinates = Coordinates(0L, 0L),
-        time = "8 hours"
+        time = "8 hours",
+        newMessage = true
     ),
     AdvertisedJob(
         id = 2L,
@@ -494,7 +630,7 @@ val advertisedJobs = listOf(
         address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
         imageUrl = "",
         price = 45,
-        jobState = JobState.ACTIVE,
+        jobState = JobState.APPROVED,
         coordinates = Coordinates(0L, 0L),
         time = "12 hours"
     ),
@@ -505,9 +641,10 @@ val advertisedJobs = listOf(
         address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
         imageUrl = "",
         price = 50,
-        jobState = JobState.ACTIVE,
+        jobState = JobState.INACTIVE,
         coordinates = Coordinates(0L, 0L),
-        time = "2 days"
+        time = "2 days",
+        newMessage = true
     ),
     AdvertisedJob(
         id = 4L,
@@ -516,9 +653,51 @@ val advertisedJobs = listOf(
         address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
         imageUrl = "",
         price = 26,
-        jobState = JobState.ACTIVE,
+        jobState = JobState.APPROVED,
         coordinates = Coordinates(0L, 0L),
         time = "4 hours"
+    )
+)
+
+val users = listOf(
+    User(
+        id = 1L,
+        firstName = "Hannah",
+        lastName = "Rose",
+        username = "hannahrose",
+        email = "hannahr@gmail.com",
+        password = "1234",
+        roles = listOf(),
+        jobsDone = listOf(),
+        workerRating = 4.2f,
+        publisherRating = 4.0f,
+        profilePicture = ""
+    ),
+    User(
+        id = 2L,
+        firstName = "Travis",
+        lastName = "Kelce",
+        username = "traviskelce",
+        email = "travisk@gmail.com",
+        password = "1234",
+        roles = listOf(),
+        jobsDone = listOf(),
+        workerRating = 3.5f,
+        publisherRating = 3.9f,
+        profilePicture = ""
+    ),
+    User(
+        id = 3L,
+        firstName = "Micheal",
+        lastName = "Styles",
+        username = "micheal",
+        email = "styles@gmail.com",
+        password = "1234",
+        roles = listOf(),
+        jobsDone = listOf(),
+        workerRating = 4.5f,
+        publisherRating = 4.1f,
+        profilePicture = ""
     )
 )
 
