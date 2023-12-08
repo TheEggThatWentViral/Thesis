@@ -1,5 +1,6 @@
 package com.example.thesisapp.ui.job.detail
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -30,22 +32,32 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.thesisapp.R
+import com.example.thesisapp.data.network.di.NotificationRetrofitInstance
+import com.example.thesisapp.fcm.NotificationData
+import com.example.thesisapp.fcm.PushNotification
 import com.example.thesisapp.ui.component.ThesisButton
 import com.example.thesisapp.ui.component.ThesisScaffold
 import com.example.thesisapp.ui.component.advertisedJobs
 import com.example.thesisapp.ui.component.diagonalGradientBorder
 import com.example.thesisapp.ui.theme.ThesisTheme
 import com.example.thesisapp.ui.theme.ThesisappTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun JobDetailPage(
     jobId: Long,
-    upPress: () -> Unit
+    upPress: () -> Unit,
+    state: JobDetailViewState,
+    onApplyClicked: (Context) -> Unit
 ) {
     val jobList = advertisedJobs.filter { job -> job.id == jobId }
     val job = jobList.first()
 
     val scroll = rememberScrollState(0)
+
+    val context = LocalContext.current
 
     ThesisScaffold {
         Column(modifier = Modifier.verticalScroll(scroll)) {
@@ -76,7 +88,7 @@ fun JobDetailPage(
                 Text(
                     text = job.price.toString() + " $",
                     style = MaterialTheme.typography.h4 ,
-                    color = ThesisTheme.colors.checkFocus,
+                    color = ThesisTheme.colors.textPrimary,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
@@ -167,9 +179,7 @@ fun JobDetailPage(
                     .align(Alignment.CenterHorizontally)
                     .width(150.dp),
                 backgroundGradient = ThesisTheme.colors.interactiveSecondary,
-                onClick = {
-
-                }
+                onClick = { onApplyClicked(context) }
             )
         }
     }
@@ -181,7 +191,9 @@ fun FeedPreview() {
     ThesisappTheme {
         JobDetailPage(
             jobId = 1L,
-            upPress = {}
+            upPress = {},
+            state = JobDetailViewState(),
+            onApplyClicked = {}
         )
     }
 }

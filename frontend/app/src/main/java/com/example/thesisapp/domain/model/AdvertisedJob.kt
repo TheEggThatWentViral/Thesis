@@ -10,10 +10,11 @@ data class AdvertisedJob(
     val address: Address,
     val coordinates: Coordinates,
     val price: Int,
-    val jobState: JobState,
+    val jobState: JobState = JobState.ACTIVE,
     val publisher: User? = null,
     val imageUrl: String,
-    val time: String
+    val time: String,
+    val newMessage: Boolean = false
 )
 
 fun JobResponse.toAdvertisedJob() =
@@ -27,7 +28,8 @@ fun JobResponse.toAdvertisedJob() =
         jobState = jobState,
         publisher = publisher,
         imageUrl = imageUrl,
-        time = time
+        time = time,
+        newMessage = newMessage
     )
 
 fun AdvertisedJob.toJobResponse() =
@@ -41,7 +43,8 @@ fun AdvertisedJob.toJobResponse() =
         jobState = jobState,
         publisher = publisher,
         imageUrl = imageUrl,
-        time = time
+        time = time,
+        newMessage = newMessage
     )
 
 fun RoomAdvertisedJob.toAdvertisedJob() =
@@ -55,7 +58,8 @@ fun RoomAdvertisedJob.toAdvertisedJob() =
         jobState = jobState,
         publisher = publisher,
         imageUrl = imageUrl,
-        time = time
+        time = time,
+        newMessage = newMessage
     )
 
 fun AdvertisedJob.toRoomAdvertisedJob() =
@@ -69,5 +73,6 @@ fun AdvertisedJob.toRoomAdvertisedJob() =
         jobState = jobState,
         publisher = publisher,
         imageUrl = imageUrl,
-        time = time
+        time = time,
+        newMessage = newMessage
     )

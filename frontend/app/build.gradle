@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -30,12 +32,22 @@ android {
         }
 
         buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:8080/api/\""
+        buildConfigField "String", "FIREBASE_URL", "\"https://fcm.googleapis.com\""
+        buildConfigField "String", "SERVER_KEY", "\"AAAASevHkr4:APA91bHrSHO6kkGZqQThhP7Hi41PIHbF2ZljzlUntc0X7z8aFxBVGjPuQ-wbpyNXYcz9QJOZMZ1FuAs-UJ577ZFUzCDyYbzbHjqR_reVyYaNlo99lnK1iydvGFNM43tG0Wdov9xp27wU\""
+        buildConfigField "String", "FCM_CONTENT_TYPE", "\"application/json\""
+        buildConfigField "String", "KEY_COLLECTION_CHAT", "\"chat\""
+        buildConfigField "String", "KEY_SENDER_ID", "\"senderId\""
+        buildConfigField "String", "KEY_RECEIVER_ID", "\"receiverId\""
+        buildConfigField "String", "KEY_MESSAGE", "\"message\""
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
         }
     }
     compileOptions {
@@ -76,6 +88,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+    implementation "androidx.appcompat:appcompat:1.5.1"
 
     def lifecycle_version = "2.4.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
@@ -132,4 +146,23 @@ dependencies {
 
     //Coil
     implementation "io.coil-kt:coil-compose:2.4.0"
+
+    //Firebase
+    implementation "com.google.firebase:firebase-messaging-ktx"
+    implementation platform("com.google.firebase:firebase-bom:32.4.1")
+    implementation "com.google.firebase:firebase-analytics-ktx"
+    implementation 'com.google.firebase:firebase-messaging:23.3.1'
+    implementation 'com.google.firebase:firebase-firestore:24.9.1'
+
+    // Google maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.maps:google-maps-services:0.1.20'
+    // Google maps for compose
+    implementation 'com.google.maps.android:maps-compose:2.8.0'
+
+    // KTX for the Maps SDK for Android
+    implementation 'com.google.maps.android:maps-ktx:3.2.1'
+    // KTX for the Maps SDK for Android Utility Library
+    implementation 'com.google.maps.android:maps-utils-ktx:3.2.1'
 }

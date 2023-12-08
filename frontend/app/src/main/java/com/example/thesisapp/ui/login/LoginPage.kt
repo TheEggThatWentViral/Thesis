@@ -299,7 +299,7 @@ fun LowerSurface() {
 fun ProfilePreview() {
     ThesisappTheme {
         LoginPage(
-            onNavigateToRoute = { "" },
+            onNavigateToRoute = {},
             state = LoginViewState(),
             onUsernameValueChanged = {},
             onPasswordValueChanged = {},

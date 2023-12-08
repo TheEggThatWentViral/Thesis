@@ -10,16 +10,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- *                          PresentationResult<T>
- *                         /
- *                        /
- *  PresentationResponse<T>                       PresentationHttpError
- *                        \                      /   PresentationThrottlingError
- *                         \                    /  /
- *                          PresentationNoResult -<
- *                                              \  \
- *                                               \  PresentationWrongServiceError
- *                                                PresentationNetworkError
+ *              PresentationResult<T>
+ *                  /
+ *                /
+ *  PresentationResponse<T>       PresentationHttpError
+ *                \               / PresentationThrottlingError
+ *                 \             /  /
+ *           PresentationNoResult -<
+ *                               \  \
+ *                                \ PresentationWrongServiceError
+ *                                PresentationNetworkError
  */
 sealed class PresentationResponse<out T : Any>
 
@@ -48,11 +48,14 @@ data class PresentationHttpError(
  * @return a presentation model wrapped into [PresentationResponse].
  */
 suspend inline fun <NM : Any, PM : Any> makeNetworkCall(
-    crossinline interactor: suspend CoroutineScope.() -> NetworkResponse<NM>,
+    crossinline interactor: suspend CoroutineScope.() ->
+        NetworkResponse<NM>,
     crossinline converter: (suspend CoroutineScope.(NM) -> PM)
 ): PresentationResponse<PM> = withContext(Dispatchers.IO) {
     when (val networkResponse = interactor()) {
-        is NetworkResult -> PresentationResult(converter(networkResponse.result))
+        is NetworkResult -> PresentationResult(
+            converter(networkResponse.result)
+        )
         is NetworkHttpError -> PresentationHttpError(
             networkResponse.errorMessage,
             networkResponse.code

@@ -47,7 +47,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             log.info("Adding {} to user {}", roleName, username);
             user.getRoles().add(role);
         } else {
-            log.error("User with username {} is not found in the database", username);
+            log.error("User with username {} is" +
+                      " not found in the database", username);
         }
     }
 

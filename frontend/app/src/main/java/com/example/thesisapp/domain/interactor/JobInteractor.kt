@@ -18,15 +18,24 @@ class JobInteractor @Inject constructor(
     private val jobNetworkDataSource: JobNetworkDataSource
 ) {
 
-    suspend fun getJobsByState(state: JobState): NetworkResponse<List<AdvertisedJob>> {
+    suspend fun getJobsByState(
+        state: JobState
+    ): NetworkResponse<List<AdvertisedJob>> {
+
         val savedData = jobDiskSataSource.getJobsByState(state)
         if (savedData.isNotEmpty()) {
-            return NetworkResult(savedData.map(RoomAdvertisedJob::toAdvertisedJob))
+            return NetworkResult(
+                savedData.map(RoomAdvertisedJob::toAdvertisedJob)
+            )
         }
 
-        return when (val response = jobNetworkDataSource.fetchJobsByState(state)) {
+        return when (
+            val response = jobNetworkDataSource.fetchJobsByState(state)
+        ) {
             is NetworkResult -> {
-                NetworkResult(response.result.map(JobResponse::toAdvertisedJob))
+                NetworkResult(
+                    response.result.map(JobResponse::toAdvertisedJob)
+                )
             }
 
             is NetworkNoResult -> response

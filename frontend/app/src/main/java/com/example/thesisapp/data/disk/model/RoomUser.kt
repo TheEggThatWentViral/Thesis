@@ -16,6 +16,7 @@ data class RoomUser(
     val password: String,
     val roles: Collection<UserRole>,
     val jobsDone: Collection<AdvertisedJob>,
-    val workerRating: Int,
-    val publisherRating: Int
+    val workerRating: Float,
+    val publisherRating: Float,
+    val profilePicture: String
 )

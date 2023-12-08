@@ -31,6 +31,7 @@ private val LightColorPalette = ThesisAppColors(
     error = FunctionalRed,
     gradient6_1 = listOf(Shadow4, Ocean3, Shadow2, Ocean3, Shadow4),
     gradient6_2 = listOf(Rose4, Lavender3, Rose2, Lavender3, Rose4),
+    gradient6_3 = listOf(Rose4, Lavender3, Rose2, Lavender3, Rose4),
     gradient3_1 = listOf(Shadow2, Ocean3, Shadow4),
     gradient3_2 = listOf(Rose2, Lavender3, Rose4),
     gradient2_1 = listOf(Shadow4, Shadow11),
@@ -41,7 +42,11 @@ private val LightColorPalette = ThesisAppColors(
     loginBasic = Ocean8,
     loginFocus = Lavender8,
     checkBasic = Rose2,
-    checkFocus = Rose7
+    checkFocus = Rose7,
+    green = FunctionalGreen,
+    orange = FunctionalOrange,
+    chatLight = Shadow3,
+    chatDark = Shadow4
 )
 
 private val DarkColorPalette = ThesisAppColors(
@@ -62,6 +67,7 @@ private val DarkColorPalette = ThesisAppColors(
     error = FunctionalRedDark,
     gradient6_1 = listOf(Shadow5, Ocean7, Shadow9, Ocean7, Shadow5),
     gradient6_2 = listOf(Rose11, Lavender7, Rose8, Lavender7, Rose11),
+    gradient6_3 = listOf(Rose11, Lavender7, Rose8),
     gradient3_1 = listOf(Shadow9, Ocean7, Shadow5),
     gradient3_2 = listOf(Rose8, Lavender7, Rose11),
     gradient2_1 = listOf(Ocean3, Shadow3),
@@ -72,7 +78,11 @@ private val DarkColorPalette = ThesisAppColors(
     loginBasic = Lavender7,
     loginFocus = Lavender3,
     checkBasic = Rose2,
-    checkFocus = Rose7
+    checkFocus = Rose7,
+    green = FunctionalGreen,
+    orange = FunctionalOrange,
+    chatLight = Shadow3,
+    chatDark = Shadow4
 )
 
 @Composable
@@ -111,6 +121,7 @@ object ThesisTheme {
 class ThesisAppColors(
     gradient6_1: List<Color>,
     gradient6_2: List<Color>,
+    gradient6_3: List<Color>,
     gradient3_1: List<Color>,
     gradient3_2: List<Color>,
     gradient2_1: List<Color>,
@@ -140,11 +151,17 @@ class ThesisAppColors(
     loginBasic: Color,
     loginFocus: Color,
     checkBasic: Color,
-    checkFocus: Color
+    checkFocus: Color,
+    green: Color,
+    orange: Color,
+    chatLight: Color,
+    chatDark: Color
 ) {
     var gradient6_1 by mutableStateOf(gradient6_1)
         private set
     var gradient6_2 by mutableStateOf(gradient6_2)
+        private set
+    var gradient6_3 by mutableStateOf(gradient6_3)
         private set
     var gradient3_1 by mutableStateOf(gradient3_1)
         private set
@@ -210,6 +227,15 @@ class ThesisAppColors(
 
     var checkFocus by mutableStateOf(checkFocus)
         private set
+    var green by mutableStateOf(green)
+        private set
+    var orange by mutableStateOf(orange)
+        private set
+    var chatLight by mutableStateOf(chatLight)
+        private set
+
+    var chatDark by mutableStateOf(chatDark)
+        private set
 
     fun update(other: ThesisAppColors) {
         gradient6_1 = other.gradient6_1
@@ -242,13 +268,18 @@ class ThesisAppColors(
         isDark = other.isDark
         loginBasic = other.loginBasic
         loginFocus = other.loginBasic
-        checkBasic = checkBasic
-        checkFocus = checkFocus
+        checkBasic = other.checkBasic
+        checkFocus = other.checkFocus
+        green = other.green
+        orange = other.orange
+        chatLight = other.chatLight
+        chatDark = other.chatDark
     }
 
     fun copy(): ThesisAppColors = ThesisAppColors(
         gradient6_1 = gradient6_1,
         gradient6_2 = gradient6_2,
+        gradient6_3 = gradient6_3,
         gradient3_1 = gradient3_1,
         gradient3_2 = gradient3_2,
         gradient2_1 = gradient2_1,
@@ -278,7 +309,11 @@ class ThesisAppColors(
         loginBasic = loginBasic,
         loginFocus = loginFocus,
         checkBasic = checkBasic,
-        checkFocus = checkFocus
+        checkFocus = checkFocus,
+        green = green,
+        orange = orange,
+        chatLight = chatLight,
+        chatDark = chatDark
     )
 }
 

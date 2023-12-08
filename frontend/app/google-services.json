@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "317488337598",
+    "project_id": "thesisapp-8c447",
+    "storage_bucket": "thesisapp-8c447.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317488337598:android:c096ad3cc6be5e0d31c4ef",
+        "android_client_info": {
+          "package_name": "com.example.thesisapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5P8UvAoQs0W2S43njmZ-Sxcq3z_ctKsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

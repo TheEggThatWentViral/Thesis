@@ -10,5 +10,8 @@ enum class JobState {
     INACTIVE,
 
     @Json(name = "Done")
-    DONE
+    DONE,
+
+    @Json(name = "Approved")
+    APPROVED
 }

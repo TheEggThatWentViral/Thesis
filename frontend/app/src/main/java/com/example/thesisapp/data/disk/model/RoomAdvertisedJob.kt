@@ -20,5 +20,6 @@ data class RoomAdvertisedJob(
     val jobState: JobState,
     val publisher: User?,
     val imageUrl: String,
-    val time: String
+    val time: String,
+    val newMessage: Boolean
 )
