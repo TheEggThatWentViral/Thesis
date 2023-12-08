@@ -1,6 +1,5 @@
 package com.example.webshopbackend.service;
 
-import com.example.webshopbackend.dao.OrderRepository;
 import com.example.webshopbackend.domain.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -30,7 +30,8 @@ fun ThesisOutlinedTextField(
     onValueChanged: (String) -> Unit,
     isError: Boolean,
     keyboardOptions: KeyboardOptions,
-    isTrailingIconNeeded: Boolean
+    isTrailingIconNeeded: Boolean,
+    modifier: Modifier = Modifier
 ) {
 
     val isVisible = remember { mutableStateOf(true) }
@@ -87,6 +88,7 @@ fun ThesisOutlinedTextField(
             focusedBorderColor = ThesisTheme.colors.loginFocus,
             errorBorderColor = ThesisTheme.colors.error
         ),
-        shape = Shapes.medium
+        shape = Shapes.medium,
+        modifier = modifier
     )
 }

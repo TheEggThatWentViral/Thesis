@@ -95,7 +95,7 @@ fun LowerSurface() {
             modifier = Modifier.padding(start = 16.dp)
         ) {
             Text(
-                text = "Jordan",
+                text = "Mike",
                 style = MaterialTheme.typography.h4,
                 color = ThesisTheme.colors.uiBackground,
                 maxLines = 1,
@@ -103,7 +103,7 @@ fun LowerSurface() {
             )
 
             Text(
-                text = "Benjamin",
+                text = "Ehrmantraut",
                 style = MaterialTheme.typography.h4,
                 color = ThesisTheme.colors.uiBackground,
                 maxLines = 1,
@@ -177,19 +177,19 @@ fun PersonalInfo() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 16.dp),
-            horizontalArrangement = Arrangement.SpaceAround
+                .padding(top = 16.dp, start = 40.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.profile_age_label),
+                    text = "25",
                     style = MaterialTheme.typography.h6,
                     color = ThesisTheme.colors.textSecondary
                 )
                 Text(
-                    text = "25",
+                    text = stringResource(id = R.string.profile_age_label),
                     style = MaterialTheme.typography.h5,
                     color = ThesisTheme.colors.textHelp
                 )
@@ -198,12 +198,12 @@ fun PersonalInfo() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.profile_studies_label),
+                    text = "Bachelor degree",
                     style = MaterialTheme.typography.h6,
                     color = ThesisTheme.colors.textSecondary
                 )
                 Text(
-                    text = "Bachelor degree",
+                    text = stringResource(id = R.string.profile_studies_label),
                     style = MaterialTheme.typography.h5,
                     color = ThesisTheme.colors.textHelp
                 )
@@ -247,18 +247,18 @@ fun PersonalInfo() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
-            horizontalArrangement = Arrangement.SpaceAround
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.profile_worker_label),
+                    text = "4.2",
                     style = MaterialTheme.typography.h6,
                     color = ThesisTheme.colors.textSecondary
                 )
                 Text(
-                    text = "4.2",
+                    text = stringResource(id = R.string.profile_worker_label),
                     style = MaterialTheme.typography.h5,
                     color = ThesisTheme.colors.textHelp
                 )
@@ -267,12 +267,12 @@ fun PersonalInfo() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.profile_publisher_label),
+                    text = "4.6",
                     style = MaterialTheme.typography.h6,
                     color = ThesisTheme.colors.textSecondary
                 )
                 Text(
-                    text = "4.6",
+                    text = stringResource(id = R.string.profile_publisher_label),
                     style = MaterialTheme.typography.h5,
                     color = ThesisTheme.colors.textHelp
                 )
@@ -320,7 +320,7 @@ fun Introduction() {
         )
 
         Text(
-            text = "Hi, my name is NJordan Benjamin and I'm a university student. Currently I'm looking for a summer job as I'm trying to save money for a holiday with my friends. I'm studying IT so I would prefer to do any IT related stuff.",
+            text = "Hi, my name is Mike Ehrmantraut and I'm a university student. Currently I'm looking for a summer job as I'm trying to save money for a holiday with my friends. I'm studying IT so I would prefer to do any IT related stuff.",
             style = MaterialTheme.typography.body2,
             color = ThesisTheme.colors.textHelp,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 20.dp)

@@ -126,8 +126,8 @@ fun HighlightedJob(
 ) {
     val scroll = rememberScrollState(0)
     val gradient = when ((index / 2) % 2) {
-        0 -> ThesisTheme.colors.gradient6_1
-        else -> ThesisTheme.colors.gradient6_2
+        0 -> ThesisTheme.colors.gradient6_2
+        else -> ThesisTheme.colors.gradient6_1
     }
     // The Cards show a gradient which spans 3 cards and scrolls with parallax.
     val gradientWidth = with(LocalDensity.current) {
@@ -446,7 +446,9 @@ fun HighlightPersonItemWide(
     gradientHeight: Float,
     scroll: Int,
     modifier: Modifier = Modifier,
-    isDetailsMode: Boolean = true
+    isDetailsMode: Boolean = true,
+    onChatClicked: (String) -> Unit,
+    username: String
 ) {
     val top = index * with(LocalDensity.current) {
         (HighlightCardBoxHeight + HighlightCardPadding).toPx()
@@ -454,7 +456,7 @@ fun HighlightPersonItemWide(
 
     ThesisCard(
         modifier = modifier
-            .height(250.dp)
+            .height(275.dp)
             .fillMaxWidth()
             .padding(
                 bottom = 12.dp,
@@ -490,40 +492,80 @@ fun HighlightPersonItemWide(
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
+
+            val name = if (username == "mike") {
+                "Kieran Brown"
+            } else {
+                "Mike Winger"
+            }
+
             Text(
-                text = "${user.firstName} ${user.lastName}",
+                text = name,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.h6,
                 color = ThesisTheme.colors.textSecondary,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             if (isDetailsMode) {
 
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = "Rate your publisher",
+                        style = MaterialTheme.typography.body2,
+                        color = ThesisTheme.colors.textHelp,
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier
-                        .align(Alignment.End)
-                        .padding(end = 16.dp)
+                        .fillMaxWidth()
+                        .padding(horizontal = 40.dp)
                 ) {
-                    Text(
-                        text = "Chat",
-                        style = MaterialTheme.typography.caption,
-                        color = ThesisTheme.colors.brand
-                    )
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_arrow_forward),
-                        tint = ThesisTheme.colors.brand,
+                        painter = painterResource(id = R.drawable.ic_full_star),
+                        tint = ThesisTheme.colors.checkFocus,
                         contentDescription = stringResource(R.string.list_arrow_icon),
                         modifier = Modifier
                             .padding(start = 4.dp)
-                            .size(22.dp)
-                            .diagonalGradientBorder(
-                                colors = ThesisTheme.colors.interactiveSecondary,
-                                shape = CircleShape
-                            )
+                            .size(32.dp)
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_full_star),
+                        tint = ThesisTheme.colors.checkFocus,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(32.dp)
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_full_star),
+                        tint = ThesisTheme.colors.checkFocus,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(32.dp)
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_star_outlined),
+                        tint = ThesisTheme.colors.checkBasic,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(32.dp)
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_star_outlined),
+                        tint = ThesisTheme.colors.checkBasic,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(32.dp)
                     )
                 }
             } else {
@@ -576,6 +618,113 @@ fun HighlightPersonItemWide(
         }
     }
 }
+
+@Composable
+fun HighlightPersonItemRatingWide(
+    user: User,
+    onUserClicked: (Long) -> Unit,
+    index: Int,
+    gradient: List<Color>,
+    gradientHeight: Float,
+    scroll: Int,
+    modifier: Modifier = Modifier,
+    isDetailsMode: Boolean = true,
+    onChatClicked: (String) -> Unit,
+    username: String
+) {
+    val top = index * with(LocalDensity.current) {
+        (HighlightCardBoxHeight + HighlightCardPadding).toPx()
+    }
+
+    ThesisCard(
+        modifier = modifier
+            .height(250.dp)
+            .fillMaxWidth()
+            .padding(
+                bottom = 12.dp,
+                start = 12.dp,
+                end = 12.dp
+            )
+    ) {
+        Column(
+            modifier = Modifier
+                .clickable(onClick = {})
+                .fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .height(140.dp)
+                    .fillMaxWidth()
+            ) {
+                val gradientOffset = top - (scroll / 3f)
+                Box(
+                    modifier = Modifier
+                        .height(100.dp)
+                        .fillMaxWidth()
+                        .offsetGradientVerticalBackground(gradient, gradientHeight, gradientOffset)
+                )
+                JobImage(
+                    imageUrl = user.profilePicture,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .width(120.dp)
+                        .align(Alignment.BottomCenter),
+                    shape = CircleShape
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+
+            val name = if (username == "mike") {
+                "Kieran Brown"
+            } else {
+                "Mike Winger"
+            }
+
+            Text(
+                text = name,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.h6,
+                color = ThesisTheme.colors.textSecondary,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+
+            if (isDetailsMode) {
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .align(Alignment.End)
+                        .padding(end = 16.dp)
+                        .clickable { onChatClicked("chat") }
+                ) {
+                    Text(
+                        text = "Chat",
+                        style = MaterialTheme.typography.caption,
+                        color = ThesisTheme.colors.brand
+                    )
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_arrow_forward),
+                        tint = ThesisTheme.colors.brand,
+                        contentDescription = stringResource(R.string.list_arrow_icon),
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .size(22.dp)
+                            .diagonalGradientBorder(
+                                colors = ThesisTheme.colors.interactiveSecondary,
+                                shape = CircleShape
+                            )
+                    )
+                }
+            } else {
+
+            }
+        }
+    }
+}
+
 
 @Composable
 fun JobImage(
@@ -649,6 +798,55 @@ val advertisedJobs = listOf(
     AdvertisedJob(
         id = 4L,
         title = "Pet sitting",
+        description = "Watching out for dogs",
+        address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
+        imageUrl = "",
+        price = 26,
+        jobState = JobState.APPROVED,
+        coordinates = Coordinates(0L, 0L),
+        time = "4 hours"
+    )
+)
+
+val peopleJobs = listOf(
+    AdvertisedJob(
+        id = 1L,
+        title = "Nate",
+        description = "A cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house v cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house cleaning is need in my house",
+        address = Address(country = "Hungary", city = "Budapest", zipCode = "1067", street = "Rákóczi utca", number = "10."),
+        imageUrl = "",
+        price = 30,
+        jobState = JobState.ACTIVE,
+        coordinates = Coordinates(0L, 0L),
+        time = "8 hours",
+        newMessage = true
+    ),
+    AdvertisedJob(
+        id = 2L,
+        title = "Kiara",
+        description = "Pack orders in a warehouse",
+        address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
+        imageUrl = "",
+        price = 45,
+        jobState = JobState.APPROVED,
+        coordinates = Coordinates(0L, 0L),
+        time = "12 hours"
+    ),
+    AdvertisedJob(
+        id = 3L,
+        title = "Ann",
+        description = "Searching fro a driver",
+        address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
+        imageUrl = "",
+        price = 50,
+        jobState = JobState.INACTIVE,
+        coordinates = Coordinates(0L, 0L),
+        time = "2 days",
+        newMessage = true
+    ),
+    AdvertisedJob(
+        id = 4L,
+        title = "Thomas",
         description = "Watching out for dogs",
         address = Address(country = "", city = "", zipCode = "", street = "", number = ""),
         imageUrl = "",
@@ -748,6 +946,42 @@ fun WideMyJobCardPreview() {
             gradientHeight = gradientWidth,
             scroll = 0,
             isDetailsMode = false
+        )
+    }
+}
+
+@Preview
+@Composable
+fun WidePersonCardPreview() {
+    ThesisappTheme {
+        val user = users.first()
+        HighlightPersonItemWide(
+            user = user,
+            onUserClicked = { },
+            index = 0,
+            gradient = ThesisTheme.colors.gradient6_1,
+            gradientHeight = gradientWidth,
+            scroll = 0,
+            onChatClicked = {},
+            username = ""
+        )
+    }
+}
+
+@Preview
+@Composable
+fun WidePersonCardRatingPreview() {
+    ThesisappTheme {
+        val user = users.first()
+        HighlightPersonItemRatingWide(
+            user = user,
+            onUserClicked = { },
+            index = 0,
+            gradient = ThesisTheme.colors.gradient6_1,
+            gradientHeight = gradientWidth,
+            scroll = 0,
+            onChatClicked = {},
+            username = ""
         )
     }
 }

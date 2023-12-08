@@ -17,6 +17,7 @@ object MainDestinations {
     const val JOB_LIST_ROUTE = "list"
     const val JOB_LIST_NAME_KEY = "listName"
     const val JOB_STATE_DETAIL_ROUTE = "stateDetail"
+    const val MAP_ROUTE = "map"
 }
 
 @Composable
@@ -34,7 +35,7 @@ class ThesisNavController(
         get() = navController.currentDestination?.route
 
     fun upPress() {
-        navController.navigateUp()
+        navController.popBackStack()
     }
 
     fun navigateToBottomBarRoute(route: String) {
@@ -67,6 +68,12 @@ class ThesisNavController(
     fun navigateToStateDetails(jobId: Long, from: NavBackStackEntry) {
         if (from.lifecycleIsResumed()) {
             navController.navigate("${MainDestinations.JOB_STATE_DETAIL_ROUTE}/$jobId")
+        }
+    }
+
+    fun navigateToMap(jobId: Long, from: NavBackStackEntry) {
+        if (from.lifecycleIsResumed()) {
+            navController.navigate("${MainDestinations.MAP_ROUTE}/$jobId")
         }
     }
 }

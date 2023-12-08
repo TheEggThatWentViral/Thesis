@@ -56,8 +56,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests().requestMatchers(POST, "/api/jobs/**").hasAnyAuthority("ROLE_USER").and()
                 .authorizeHttpRequests().requestMatchers(DELETE, "/api/jobs/**").hasAnyAuthority("ROLE_ADMIN").and()
                 .authorizeHttpRequests().requestMatchers(POST, "/api/users/save/**").hasAnyAuthority("ROLE_ADMIN").and()
-                .authorizeHttpRequests().requestMatchers(POST, "/api/vehicles/save/**").hasAnyAuthority("ROLE_ADMIN").and()
-                .authorizeHttpRequests().requestMatchers(DELETE, "/api/vehicles/**").hasAnyAuthority("ROLE_ADMIN").and()
                 .authorizeHttpRequests().anyRequest().authenticated().and()
                 .addFilter(customAuthenticationFilter)
                 .addFilterBefore(

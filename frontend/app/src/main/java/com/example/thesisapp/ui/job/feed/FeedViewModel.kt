@@ -22,7 +22,9 @@ class FeedViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _stateStream: MutableStateFlow<FeedViewState> =
-        MutableStateFlow(FeedViewState(listOf(), listOf(), listOf(), listOf()))
+        MutableStateFlow(
+            FeedViewState(listOf(), listOf(), listOf(), listOf())
+        )
     val stateStream = _stateStream.asStateFlow()
 
     private var state: FeedViewState
@@ -33,20 +35,27 @@ class FeedViewModel @Inject constructor(
 
     fun getJobsByState(context: Context) {
         viewModelScope.launch {
-            when (val response = feedPresenter.getJobsByState(JobState.ACTIVE)) {
+            when (
+                val response = feedPresenter.getJobsByState(
+                    JobState.ACTIVE
+                )
+            ) {
                 is PresentationResult -> {
                     Timber.i("Jobs are ready to be loaded")
                     state = state.copy(
-                        jobsHighlyPaid = response.result.filter { it.price > 50 },
+                        jobsHighlyPaid = response.result,
                         jobsNearYou = response.result,
                         jobsRecentlyAdded = response.result,
                         jobsAll = response.result
                     )
                 }
                 is PresentationHttpError -> {
-                    Timber.i("Http error occurred during loading jobs")
+                    Timber.i(
+                        "Http error occurred during loading jobs"
+                    )
                     state = state.copy(
-                        loadingJobsError = triggered(
+                        loadingJobsError =
+                        triggered(
                             response.message ?: context.getString(R.string.unknown_error_msg)
                         )
                     )
@@ -54,7 +63,8 @@ class FeedViewModel @Inject constructor(
                 else -> {
                     Timber.i("Unknown error occurred during loading jobs")
                     state = state.copy(
-                        loadingJobsError = triggered(context.getString(R.string.unknown_error_msg))
+                        loadingJobsError =
+                        triggered(context.getString(R.string.unknown_error_msg))
                     )
                 }
             }

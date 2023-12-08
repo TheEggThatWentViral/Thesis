@@ -27,19 +27,28 @@ class HttpModule {
     @Retention(AnnotationRetention.RUNTIME)
     annotation class AuthenticatedClient
 
+    @Qualifier
+    @Retention(AnnotationRetention.RUNTIME)
+    annotation class FirebaseClient
+
     @AuthenticatedClient
     @Provides
     @Singleton
     fun provideAuthenticatedOkHttpClient(tokenInterceptor: TokenInterceptor): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(
+                HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BODY)
+            )
             .addInterceptor(tokenInterceptor)
             .build()
 
     @AuthenticatedClient
     @Provides
     @Singleton
-    fun provideAuthenticatedRetrofit(@AuthenticatedClient okHttpClient: OkHttpClient): Retrofit =
+    fun provideAuthenticatedRetrofit(
+        @AuthenticatedClient okHttpClient: OkHttpClient
+    ): Retrofit =
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
@@ -60,6 +69,16 @@ class HttpModule {
     fun provideLoginRetrofit(@LoginClient okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+
+    @FirebaseClient
+    @Singleton
+    @Provides
+    fun provideFirebaseRetrofit(@LoginClient okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.FIREBASE_URL)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()

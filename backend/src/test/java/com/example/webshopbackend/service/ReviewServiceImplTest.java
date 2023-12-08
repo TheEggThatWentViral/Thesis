@@ -1,8 +1,5 @@
 package com.example.webshopbackend.service;
 
-import com.example.webshopbackend.dao.ReviewRepository;
-import com.example.webshopbackend.dao.VehicleRepository;
-import com.example.webshopbackend.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 

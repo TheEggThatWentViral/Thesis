@@ -2,6 +2,7 @@ package com.example.thesisapp.ui.job.state
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
@@ -23,26 +25,34 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
 import com.example.thesisapp.R
 import com.example.thesisapp.domain.model.JobState
 import com.example.thesisapp.ui.component.HighlightCardBoxHeight
 import com.example.thesisapp.ui.component.HighlightCardPadding
+import com.example.thesisapp.ui.component.HighlightPersonItemRatingWide
 import com.example.thesisapp.ui.component.HighlightPersonItemWide
 import com.example.thesisapp.ui.component.Jobs
+import com.example.thesisapp.ui.component.ThesisButton
 import com.example.thesisapp.ui.component.ThesisButtonGradient
 import com.example.thesisapp.ui.component.ThesisCard
 import com.example.thesisapp.ui.component.ThesisScaffold
 import com.example.thesisapp.ui.component.advertisedJobs
+import com.example.thesisapp.ui.component.peopleJobs
 import com.example.thesisapp.ui.component.users
 import com.example.thesisapp.ui.theme.ThesisTheme
 import com.example.thesisapp.ui.theme.ThesisappTheme
 
 @Composable
 fun StateDetailsPage(
-    jobId: Long
+    jobId: Long,
+    onNavigateToRoute: (String) -> Unit,
+    state: StateDetailsViewState,
+    openMap: (Long) -> Unit
 ) {
 
     val jobList = advertisedJobs.filter { job -> job.id == jobId }
@@ -145,6 +155,7 @@ fun StateDetailsPage(
                         .height(140.dp)
                         .weight(3f)
                         .padding(8.dp)
+                        .clickable { openMap(1L) }
                 ) {
                     Box(
                         modifier = Modifier
@@ -205,10 +216,21 @@ fun StateDetailsPage(
                 }
             }
 
+            Spacer(modifier = Modifier.padding(vertical = 8.dp))
+
             ActiveLowerSection(
                 isMyJob = false,
-                scroll = scroll
+                scroll = scroll,
+                onNavigateToRoute = onNavigateToRoute,
+                username = state.username
             )
+
+            /*DoneLowerSection(
+                isMyJob = true,
+                scroll = scroll,
+                onNavigateToRoute = onNavigateToRoute,
+                username = state.username
+            )*/
         }
     }
 }
@@ -216,7 +238,9 @@ fun StateDetailsPage(
 @Composable
 fun ActiveLowerSection(
     isMyJob: Boolean,
-    scroll: ScrollState
+    scroll: ScrollState,
+    onNavigateToRoute: (String) -> Unit,
+    username: String
 ) {
     val labelId = if (isMyJob) {
         R.string.applicants_label
@@ -235,7 +259,7 @@ fun ActiveLowerSection(
 
     if (isMyJob) {
         Jobs(
-            jobs = advertisedJobs,
+            jobs = peopleJobs,
             onJobClick = {}
         )
         Spacer(modifier = Modifier.padding(vertical = 8.dp))
@@ -255,28 +279,70 @@ fun ActiveLowerSection(
                 onClick = { }
             )
         }
+        Spacer(modifier = Modifier.padding(vertical = 8.dp))
     } else {
         val user = users.first()
         val gradientHeight = with(LocalDensity.current) {
             (6 * (HighlightCardBoxHeight + HighlightCardPadding).toPx())
         }
 
-        HighlightPersonItemWide(
+        HighlightPersonItemRatingWide(
             user = user,
             onUserClicked = {},
             index = 2,
             gradient = ThesisTheme.colors.gradient6_1,
             gradientHeight = gradientHeight,
-            scroll = scroll.value
+            scroll = scroll.value,
+            onChatClicked = onNavigateToRoute,
+            username = username
         )
     }
 }
 
 @Composable
 fun DoneLowerSection(
-    isMyJob: Boolean
+    isMyJob: Boolean,
+    scroll: ScrollState,
+    onNavigateToRoute: (String) -> Unit,
+    username: String
 ) {
+    val user = users.first()
+    val gradientHeight = with(LocalDensity.current) {
+        (6 * (HighlightCardBoxHeight + HighlightCardPadding).toPx())
+    }
 
+    HighlightPersonItemWide(
+        user = user,
+        onUserClicked = {},
+        index = 2,
+        gradient = ThesisTheme.colors.gradient6_1,
+        gradientHeight = gradientHeight,
+        scroll = scroll.value,
+        onChatClicked = onNavigateToRoute,
+        username = username
+    )
+
+    Spacer(modifier = Modifier.padding(vertical = 4.dp))
+
+    Box(modifier = Modifier.fillMaxWidth()) {
+        ThesisButton(
+            content = {
+                Text(
+                    text = "Close job",
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.button,
+                )
+            },
+            modifier = Modifier
+                .align(Alignment.Center)
+                .width(150.dp),
+            backgroundGradient = ThesisTheme.colors.interactiveSecondary,
+            onClick = { }
+        )
+    }
+
+    Spacer(modifier = Modifier.padding(vertical = 8.dp))
 }
 
 @Preview
@@ -284,7 +350,10 @@ fun DoneLowerSection(
 fun StateDetailsPagePreview() {
     ThesisappTheme {
         StateDetailsPage(
-            jobId = 1L
+            jobId = 1L,
+            onNavigateToRoute = {},
+            state = StateDetailsViewState("kieran"),
+            openMap = {}
         )
     }
 }

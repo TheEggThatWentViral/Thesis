@@ -11,12 +11,12 @@ class FeedPresenter @Inject constructor(
     private val jobInteractor: JobInteractor
 ) {
 
-    suspend fun getJobsByState(state: JobState): PresentationResponse<List<AdvertisedJob>> =
+    suspend fun getJobsByState(state: JobState): PresentationResponse<List<FeedJobDataPreview>> =
         makeNetworkCall(
             interactor = {
                 jobInteractor.getJobsByState(state)
             },
-            converter = { it }
+            converter = { it.map(AdvertisedJob::toFeedJobDataPreview) }
         )
 
     suspend fun getJobById(id: Long): PresentationResponse<AdvertisedJob> = makeNetworkCall(
@@ -31,5 +31,17 @@ class FeedPresenter @Inject constructor(
             jobInteractor.saveJob(job)
         },
         converter = { it }
+    )
+}
+
+data class FeedJobDataPreview(
+    val jobName: String,
+    val price: Int
+)
+
+fun AdvertisedJob.toFeedJobDataPreview(): FeedJobDataPreview {
+    return FeedJobDataPreview(
+        jobName = title,
+        price = price
     )
 }

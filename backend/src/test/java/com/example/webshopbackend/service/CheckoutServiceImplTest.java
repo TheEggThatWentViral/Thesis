@@ -1,7 +1,6 @@
 package com.example.webshopbackend.service;
 
 import com.example.webshopbackend.dao.AddressRepository;
-import com.example.webshopbackend.dao.CheckoutRepository;
 import com.example.webshopbackend.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -11,8 +11,12 @@ import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.ExtendedFloatingActionButton
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,6 +43,7 @@ import com.example.thesisapp.ui.component.ThesisScaffold
 import com.example.thesisapp.ui.component.ThesisSurface
 import com.example.thesisapp.ui.component.advertisedJobs
 import com.example.thesisapp.ui.navigation.HomeSections
+import com.example.thesisapp.ui.theme.Shapes
 import com.example.thesisapp.ui.theme.ThesisTheme
 import com.example.thesisapp.ui.theme.ThesisappTheme
 
@@ -46,7 +52,8 @@ fun HomePage(
     onNavigateToRoute: (String) -> Unit,
     getAdvertisedJobs: () -> List<JobCollectionData>,
     onJobClick: (Long) -> Unit,
-    onNavigateToList: (Int) -> Unit
+    onNavigateToList: (Int) -> Unit,
+    onNavigateToMap: (Long) -> Unit
 ) {
     val jobCollections = remember {
         listOf(
@@ -77,6 +84,21 @@ fun HomePage(
                 tabs = HomeSections.values(),
                 currentRoute = HomeSections.FEED.route,
                 navigateToRoute = onNavigateToRoute
+            )
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = { onNavigateToMap(0L) },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_map),
+                        contentDescription = ""
+                    )
+                },
+                text = { Text(text = "Map") },
+                backgroundColor = ThesisTheme.colors.chatLight,
+                contentColor = ThesisTheme.colors.uiBackground,
+                shape = Shapes.medium
             )
         }
     ) {
@@ -170,7 +192,8 @@ fun FeedPreview() {
             onNavigateToRoute = {},
             getAdvertisedJobs = { listOf() },
             onJobClick = {},
-            onNavigateToList = {}
+            onNavigateToList = {},
+            onNavigateToMap = {}
         )
     }
 }
